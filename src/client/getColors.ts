@@ -1,28 +1,56 @@
-const getColors = (svg:Element) => {
-    const colors = new Set(); // Use a Set to avoid duplicates
+const getColors = (svg: Element): {
+    fill: string[],
+    stroke: string[],
+    stopColor: string[],
+} => {
+    const colors: {
+        fill: Set<string>,
+        stroke: Set<string>,
+        stopColor: Set<string>,
+    } = {
+        fill: new Set(),
+        stroke: new Set(),
+        stopColor: new Set(),
+    };
 
     const elements = svg.querySelectorAll("*");
-    
+
     for (const element of elements) {
         const styleAttribute = element.getAttribute("style");
         if (styleAttribute) {
             // Extract color values from inline styles
             const colorMatches = styleAttribute.match(/fill:(#[a-f0-9]{3,6})|(rgb\(\d+,\s*\d+,\s*\d+\))/gi);
             if (colorMatches) {
-                colorMatches.forEach(color => colors.add(color.slice(5)));
+                colorMatches.forEach(color => colors.fill.add(color.slice(5)));
             }
         }
 
-        const fill = element.getAttribute("fill");
-        const stroke = element.getAttribute("stroke");
-        const stopColor = element.getAttribute("stop-color");
-
-        if (fill) colors.add(fill);
-        if (stroke) colors.add(stroke);
-        if (stopColor) colors.add(stopColor);
+        if (element.hasAttribute("fill")) {
+            colors.fill.add(element.getAttribute("fill") || "");
+        }
+        if (element.hasAttribute("stroke")) {
+            colors.stroke.add(element.getAttribute("stroke") || "");
+        }
+        if (element.hasAttribute("stop-color")) {
+            colors.stopColor.add(element.getAttribute("stop-color") || "");
+        }
     }
 
-    return Array.from(colors); // Convert Set to an array
-}
+    const resultColors: {
+        fill: string[],
+        stroke: string[],
+        stopColor: string[],
+    } = {
+        fill: [],
+        stroke: [],
+        stopColor: [],
+    }
+    // Convert Sets to arrays 
+    resultColors.fill = Array.from(colors.fill);
+    resultColors.stroke = Array.from(colors.stroke);
+    resultColors.stopColor = Array.from(colors.stopColor);
+
+    return resultColors;
+};
 
 export default getColors;
