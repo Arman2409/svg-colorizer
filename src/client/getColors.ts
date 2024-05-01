@@ -1,4 +1,4 @@
-const getColors = (svg:HTMLElement) => {
+const getColors = (svg:Element) => {
     const colors = new Set(); // Use a Set to avoid duplicates
 
     const elements = svg.querySelectorAll("*");

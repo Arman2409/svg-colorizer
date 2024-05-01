@@ -1,12 +1,17 @@
+import commonFunctions from "./src/common/main";
+
 // Check if running in a browser environment (document object exists)
 const isBrowser = typeof document !== 'undefined';
 
-let exportModule = {};
+let conditionalModule = {};
 
 if (isBrowser) {
-  exportModule = await import('./src/client/main');
+  conditionalModule = await import('./src/client/main');
 } else {
-  exportModule = await import('./src/node/main');
+  conditionalModule = await import('./src/node/main');
 }
 
-export default exportModule;
+export default {
+  ...commonFunctions,
+  ...conditionalModule,
+};
