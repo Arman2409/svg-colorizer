@@ -19,7 +19,7 @@ const fill = (
 
         element.setAttribute("style", `fill:${color}`);
     };
-
+     
     if (callback) callback()
 }
 

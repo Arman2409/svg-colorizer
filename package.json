@@ -4,7 +4,7 @@
   "description": "SVG format images colorizer which can be used both for client and server side applications",
   "scripts": {
     "build": "rm -rf ./dist && npx tsup src --outDir dist --format cjs,esm --dts",
-    "release": "npm run build &&",
+    "release": "npm run build",
     "test": "npx jest"
   },
   "main": "dist/index.cjs",
