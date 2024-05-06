@@ -1,4 +1,4 @@
-const getColors = (svg: Element): {
+const getColors = (element: Element, onlyParent?: boolean): {
     fill: string[],
     stroke: string[],
     stopColor: string[],
@@ -13,7 +13,10 @@ const getColors = (svg: Element): {
         stopColor: new Set(),
     };
 
-    const elements = svg.querySelectorAll("*");
+    let elements;
+
+    if (onlyParent) elements = [element];
+    else elements = element.querySelectorAll("*");
 
     for (const element of elements) {
         const styleAttribute = element.getAttribute("style");
