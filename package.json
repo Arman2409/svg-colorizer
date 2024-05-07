@@ -1,24 +1,22 @@
 {
   "name": "svg-colorizer",
   "version": "1.0.0",
-  "description": "SVG format images colorizer which can be used both for client and server side applications",
+  "description": "Modify colors in SVG icons and illustrations for web and server-side applications.",
   "scripts": {
-    "build": "rm -rf ./dist && npx tsup src --outDir dist --format cjs,esm --dts",
-    "release": "npm run build",
+    "build": "npx tsup --config tsup.config.js",
+    "release": "npm run build && rm -rf ./test",
     "test": "npx jest"
   },
-  "main": "dist/index.cjs",
   "keywords": [
     "svg",
     "colorizer",
-    "colors"
+    "colors",
+    "fill",
+    "vector",
+    "image"
   ],
   "author": "Arman Ghazaryan",
   "license": "ISC",
-  "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
-  },
   "devDependencies": {
     "@babel/preset-env": "^7.23.8",
     "@types/jest": "^29.5.11",
@@ -28,8 +26,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-svg-transformer": "^1.0.0",
     "jsdom": "^24.0.0",
-    "ts-jest": "^29.1.1",
-    "tsup": "^8.0.1",
+    "ts-jest": "^29.1.2",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
   "repository": {

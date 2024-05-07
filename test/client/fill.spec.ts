@@ -1,5 +1,5 @@
-import fill from "../../src/client/fill";
-import getColors from "../../src/client/getColors";
+import fill from "../../lib/client/fill";
+import getColors from "../../lib/client/getColors";
 import mockElement from "../_utils/mockElement";
 
 const FILL_COLOR = "red";
