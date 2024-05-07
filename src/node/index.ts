@@ -1,9 +1,12 @@
 import getColors from "./getColors";
+import fill from "./fill";
 
 export {
-    getColors
+    getColors,
+    fill
 }
 
 export default {
     getColors,
+    fill
 }
