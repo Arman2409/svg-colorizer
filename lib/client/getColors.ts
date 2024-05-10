@@ -1,16 +1,16 @@
 const getColors = (element: Element, onlyParent?: boolean): {
     fill: string[],
     stroke: string[],
-    stopColor: string[],
+    stop: string[],
 } => {
     const colors: {
         fill: Set<string>,
         stroke: Set<string>,
-        stopColor: Set<string>,
+        stop: Set<string>,
     } = {
         fill: new Set(),
         stroke: new Set(),
-        stopColor: new Set(),
+        stop: new Set(),
     };
 
     let elements;
@@ -35,23 +35,23 @@ const getColors = (element: Element, onlyParent?: boolean): {
             colors.stroke.add(element.getAttribute("stroke") || "");
         }
         if (element.hasAttribute("stop-color")) {
-            colors.stopColor.add(element.getAttribute("stop-color") || "");
+            colors.stop.add(element.getAttribute("stop-color") || "");
         }
     }
 
     const resultColors: {
         fill: string[],
         stroke: string[],
-        stopColor: string[],
+        stop: string[],
     } = {
         fill: [],
         stroke: [],
-        stopColor: [],
+        stop: [],
     }
     // Convert Sets to arrays 
     resultColors.fill = Array.from(colors.fill);
     resultColors.stroke = Array.from(colors.stroke);
-    resultColors.stopColor = Array.from(colors.stopColor);
+    resultColors.stop = Array.from(colors.stop);
 
     return resultColors;
 };

@@ -5,13 +5,11 @@ describe('randomColor', () => {
         const hexColor = randomColor("hex");
 
         expect(hexColor.startsWith("#")).toBeTruthy();
-        
     })
 
     test("should return RGB value for RGB option", () => {
         const rgbColor = randomColor("rgb");
 
         expect(rgbColor.startsWith("rgb")).toBeTruthy();
-        
     })
 });

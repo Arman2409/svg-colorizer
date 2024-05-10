@@ -3,15 +3,20 @@ import getColors from "./getColors";
 
 const replace = (
     elemString: string,
-    color: string,
-    ignoreColors?: string[],
+    detailsArray: {
+        target: string,
+        replace: string
+    }[],
     callback?: Function): string => {
     const colors = getColors(elemString);
     const colorsArr = getAllElementColors(colors);
 
-    colorsArr.forEach(colorItem => {
-        if (ignoreColors && ignoreColors?.includes(colorItem)) return;
-        elemString = elemString.replaceAll(colorItem, color);
+    detailsArray.forEach(({ target, replace})=> {
+        colorsArr.forEach(colorItem => {
+            if(colorItem === target) {
+                elemString = elemString.replaceAll(colorItem, replace);
+            }
+        })
     })
 
     if (callback) callback()
