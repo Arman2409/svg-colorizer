@@ -40,23 +40,23 @@ const newColor = randomColor();
 
 ## Available functions
 
-There are three main categories from where functions can be imported <u>client</u>, <u>node</u> and <u>common</u>.
-Functions in <u>node</u> category use string manipulation for reaching their purpose, while functions in <u>client</u> category work with <i>DOM API</i> to get elements from HTML page,so this functions can be used only if the <i>DOM API</i> is available in the environment. Functions in <u>common</u> are for general purposes.
+There are three main categories from where functions can be imported **client**, **node** and **common**.
+Functions in **node** category use string manipulation for reaching their purpose, while functions in **client** category work with *DOM API* to get elements from HTML page,so this functions can be used only if the *DOM API* is available in the environment. Functions in **common** are for general purposes.
 
 - [client](#client)
-  - [fill](#fill)
-  - [getColors](#getColors)
-  - [replace](#replace)
+  - fill
+  - getColors
+  - replace
 - [node](#node)
   - fill
   - getColors
   - replace
-- [common](#node)
-  - [randomColor](#randomColor)
+- [common](#common)
+  - randomColor
 
 ### client 
 
-#### 1. `fill(svg, color, [ignoreColors], [callback])`(#fill)
+#### 1. `fill(svg, color, [ignoreColors], [callback])`
 
 This function fills the specified SVG element with a given color.
 
@@ -98,7 +98,7 @@ An object with keys:
 * `stop`: An array containing all stop color strings used in the SVG for gradients (if applicable).
 
 ### node
-Functions of node get thes same parameters as in client but instead of <i>SVG HTML element</i> they take a <i>string of an SVG HTML element</i>.Note that all functions of node return something and you should keep that value returned from them to use furthermore.
+Functions of node get thes same parameters as in client but instead of *SVG HTML element* they take a *string of an SVG HTML element*.Note that all functions of node return something and you should keep that value returned from them to use furthermore.
 
 ### common
 #### 1. `randomColor([format])`
