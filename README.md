@@ -55,40 +55,60 @@ Functions in <u>node</u> category use string manipulation for reaching their pur
   - [randomColor](#randomColor)
 
 ### client 
-1. <p id="fill" style="font-size: 18px; color: brown" >fill(svg, color, [ignoreColors], [callback])</p>
-   <p>fills the svg with a given color</p>
-    * `svg` is an SVG element
-    * `color` is a string representing the desired color
-    (if not provided it will be set to `"black"`).
-    * `ignoreColors` is an optional array of colors that should remain unchanged in the SVG code.
-    * `callback` is an optional callback function.
-2. <p id="replace" style="font-size: 18px; color: brown" >replace(svg, detailsArray, [callback])</p>
-   <p>replaces given colors in the SVG</p>
-    * `svg` is an SVG element
-    * `detailsArray` is an array of the objects in this format 
-    ```javascript
-    {
-        target: string,
-        replace: string
-    }
-    ```
-    * `callback` is an optional callback function.
-3. <p id="getColors" style="font-size: 18px; color: brown" >getColors(svg, [onlyParent])</p>
-    <p>returns the colors used in the SVG in the format below</p>
-    ```javascript
-    {
-        fill: [],
-        stroke: [],
-        stop: []
-    }
-    ```
-    * `svg` is an SVG element
-    * `onlyParent` is an optional argument, which indicates whether only the given elements colors should be extracted or also the colors of its children.
+
+#### 1. `fill(svg, color, [ignoreColors], [callback])`(#fill)
+
+This function fills the specified SVG element with a given color.
+
+**Arguments:**
+
+* `svg`: A DOM element representing the SVG element you want to modify (client-side JavaScript).
+* `color`: A string representing the desired fill color.
+* `ignoreColors` (optional): An array of color strings to exclude from replacement.
+* `callback` (optional): A function that executes after the fill operation is complete.
+
+
+#### 2. `replace(svg, detailsArray, [callback])`
+
+This function replaces specific colors within the SVG element based on a configuration.
+
+**Arguments:**
+
+* `svg`: A DOM element representing the SVG element you want to modify (client-side JavaScript).
+* `detailsArray`: An array of objects with the following properties:
+    * `target`: A string representing the color you want to replace within the SVG.
+    * `replace`: A string representing the new color to use as a replacement.
+* `callback` (optional): A function that executes after the replace operation is complete.
+
+#### 3. `getColors(svg, [onlyParent])`
+
+This function extracts the colors used in the SVG element and returns them as an object.
+
+**Arguments:**
+
+* `svg`: A DOM element representing the SVG element from which to extract colors (client-side JavaScript).
+* `onlyParent` (optional): A boolean flag indicating whether to extract colors only from the parent element (true) or include its children (false, default).
+
+**Returns:**
+
+An object with keys:
+
+* `fill`: An array containing all fill color strings used in the SVG.
+* `stroke`: An array containing all stroke color strings used in the SVG (if applicable).
+* `stop`: An array containing all stop color strings used in the SVG for gradients (if applicable).
 
 ### node
 Functions of node get thes same parameters as in client but instead of <i>SVG HTML element</i> they take a <i>string of an SVG HTML element</i>.Note that all functions of node return something and you should keep that value returned from them to use furthermore.
 
 ### common
-1. <p id="randomColor" style="font-size: 18px; color: brown" >randomColor([format])</p>
-   <p> Returns a random color in hexadecimal notation or RGB form. </p>
-   * `format` is an optional string which can has the value of "hex" or "rgb"
+#### 1. `randomColor([format])`
+
+This function generates a random color and returns it in either hexadecimal notation or RGB format.
+
+**Arguments:**
+
+* `format` (optional): A string specifying the desired format, either "hex" (default) or "rgb".
+
+**Returns:**
+
+A string representing the randomly generated color in the specified format (hexadecimal or RGB).
