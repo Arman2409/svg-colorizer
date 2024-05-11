@@ -1,8 +1,10 @@
+import type { SvgColors, SvgColorsInSets } from "../../types/global";
+
 const getColors = (
   elementString: string,
   onlyParent?: boolean
-): { fill: string[], stroke: string[], stop: string[] } => {
-  const colors = {
+): SvgColors => {
+  const colors: SvgColorsInSets = {
     fill: new Set<string>(),
     stroke: new Set<string>(),
     stop: new Set<string>(),

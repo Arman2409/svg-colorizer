@@ -1,12 +1,10 @@
 import getAllElementColors from "../../helpers/getAllElementColors";
+import type { ReplaceDetail } from "../../types/global";
 import getColors from "./getColors";
 
 const replace = (
     svg: Element,
-    detailsArray: {
-        target: string,
-        replace: string
-    }[],
+    detailsArray: ReplaceDetail[],
     callback?: Function): void => {
     let elemString = svg.outerHTML;
 
