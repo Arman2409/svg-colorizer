@@ -7,7 +7,7 @@ const replace = (
         target: string,
         replace: string
     }[],
-    callback?: Function): Element => {
+    callback?: Function): void => {
     let elemString = svg.outerHTML;
 
     const colors = getColors(svg);
@@ -23,9 +23,9 @@ const replace = (
 
     const domParser = new DOMParser();
     const elemDOM = domParser.parseFromString(`<html>${elemString}<html>`, "text/html");
-    svg = elemDOM.querySelector("svg") as Element;
+    const updatedSVG = elemDOM.querySelector("svg") as Element;
+    svg.outerHTML = updatedSVG.outerHTML;
     if (callback) callback();
-    return svg;
 }
 
 export default replace;
