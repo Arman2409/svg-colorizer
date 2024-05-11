@@ -1,13 +1,7 @@
-const getColors = (element: Element, onlyParent?: boolean): {
-    fill: string[],
-    stroke: string[],
-    stop: string[],
-} => {
-    const colors: {
-        fill: Set<string>,
-        stroke: Set<string>,
-        stop: Set<string>,
-    } = {
+import type { SvgColors, SvgColorsInSets } from "../../types/global";
+
+const getColors = (element: Element, onlyParent?: boolean): SvgColors => {
+    const colors: SvgColorsInSets = {
         fill: new Set(),
         stroke: new Set(),
         stop: new Set(),
@@ -39,11 +33,7 @@ const getColors = (element: Element, onlyParent?: boolean): {
         }
     }
 
-    const resultColors: {
-        fill: string[],
-        stroke: string[],
-        stop: string[],
-    } = {
+    const resultColors: SvgColors = {
         fill: [],
         stroke: [],
         stop: [],

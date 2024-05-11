@@ -1,12 +1,10 @@
 import getAllElementColors from "../../helpers/getAllElementColors";
+import type { ReplaceDetail } from "../../types/global";
 import getColors from "./getColors";
 
 const replace = (
     elemString: string,
-    detailsArray: {
-        target: string,
-        replace: string
-    }[],
+    detailsArray: ReplaceDetail[],
     callback?: Function): string => {
     const colors = getColors(elemString);
     const colorsArr = getAllElementColors(colors);
