@@ -1,4 +1,3 @@
-import getAllElementColors from "../../helpers/getAllElementColors";
 import getColors from "./getColors";
 
 const fill = (
@@ -10,9 +9,9 @@ const fill = (
         throw new Error("SVG element and color should be provided");
     }
 
-    const colors = getColors(elementString);
-    const colorsArr = getAllElementColors(colors);
-    colorsArr.forEach(colorItem => {
+    const colors = getColors(elementString, false, true) as string[];
+
+    colors.forEach(colorItem => {
         if (ignoreColors && ignoreColors?.includes(colorItem)) return;
         elementString = elementString.replaceAll(colorItem, color);
     })

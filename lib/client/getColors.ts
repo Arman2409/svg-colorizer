@@ -1,9 +1,11 @@
+import getAllElementColors from "../../helpers/getAllElementColors";
 import requiresDOM from "../../helpers/requiresDOM";
 import type { SvgColors, SvgColorsInSets } from "../../types/global";
 
 const getColors = (
     element: Element,
-    onlyParent?: boolean): SvgColors => {
+    onlyParent?: boolean, 
+    asArray?: boolean): SvgColors | string[] => {
     if (!element) {
         throw new Error("SVG element should be provided");
     }
@@ -52,6 +54,7 @@ const getColors = (
     resultColors.stroke = Array.from(colors.stroke);
     resultColors.stop = Array.from(colors.stop);
 
+    if(asArray) return getAllElementColors(resultColors);
     return resultColors;
 };
 

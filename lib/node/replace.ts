@@ -1,6 +1,5 @@
-import getAllElementColors from "../../helpers/getAllElementColors";
-import type { ReplaceDetail } from "../../types/global";
 import getColors from "./getColors";
+import type { ReplaceDetail } from "../../types/global";
 
 const replace = (
     elemString: string,
@@ -10,11 +9,10 @@ const replace = (
         throw new Error("SVG element string and details array should be provided");
     }
 
-    const colors = getColors(elemString);
-    const colorsArr = getAllElementColors(colors);
+    const colors = getColors(elemString, false, true) as string[];
 
     detailsArray.forEach(({ target, replace }) => {
-        colorsArr.forEach(colorItem => {
+        colors.forEach(colorItem => {
             if (colorItem === target) {
                 elemString = elemString.replaceAll(colorItem, replace);
             }

@@ -5,6 +5,7 @@ export default defineConfig({
       client: 'lib/client/index.ts',
       node: 'lib/node/index.ts',
       common: 'lib/common/index.ts',
+      index: 'types/global.ts'
     },
     outDir: "./",
     splitting: false,
