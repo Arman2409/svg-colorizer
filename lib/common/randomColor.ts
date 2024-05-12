@@ -1,5 +1,9 @@
 const randomColor = (
     format: "hex" | "rgb" = "hex"): string => {
+    if(!["hex" , "rgb"].includes(format)) {
+        throw new Error("Invalid format. Format should be 'hex' or 'rgb'");
+    }
+    
     if (format === "hex") {
         // Generate random hex color code
         const hexCode = "#" + Array(6).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join("");

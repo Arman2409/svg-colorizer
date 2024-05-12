@@ -6,12 +6,16 @@ const replace = (
     elemString: string,
     detailsArray: ReplaceDetail[],
     callback?: Function): string => {
+    if (typeof elemString !== "string" || typeof detailsArray !== "object") {
+        throw new Error("SVG element string and details array should be provided");
+    }
+
     const colors = getColors(elemString);
     const colorsArr = getAllElementColors(colors);
 
-    detailsArray.forEach(({ target, replace})=> {
+    detailsArray.forEach(({ target, replace }) => {
         colorsArr.forEach(colorItem => {
-            if(colorItem === target) {
+            if (colorItem === target) {
                 elemString = elemString.replaceAll(colorItem, replace);
             }
         })

@@ -4,6 +4,10 @@ const getColors = (
   elementString: string,
   onlyParent?: boolean
 ): SvgColors => {
+  if (typeof elementString !== "string") {
+    throw new Error("SVG element string should be provided");
+  }
+
   const colors: SvgColorsInSets = {
     fill: new Set<string>(),
     stroke: new Set<string>(),
