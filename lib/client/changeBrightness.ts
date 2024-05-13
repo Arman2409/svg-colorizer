@@ -1,5 +1,6 @@
 import getColors from "./getColors";
 import replace from "./replace";
+import brightenColor from "../../helpers/brightenColor";
 
 const changeBrightness = (
     svg: Element, 
