@@ -1,4 +1,6 @@
+# node modules 
 /node_modules
 
+# lockfiles 
 package-lock.json
 pnpm-lock.yaml

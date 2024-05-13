@@ -1,5 +1,6 @@
 import getAllElementColors from "../../helpers/getAllElementColors";
 import hasCommonElements from "../../helpers/hasCommonElements";
+import requiresDOM from "../../helpers/requiresDOM";
 import getColors from "./getColors";
 
 const fill = (
@@ -7,6 +8,10 @@ const fill = (
     color: string,
     ignoreColors?: string[],
     callback?: Function): void => {
+    if (!svg || typeof color !== "string") {
+        throw new Error("SVG element and color should be provided");
+    }
+
     const elements = svg.querySelectorAll("*");
 
     for (const element of elements) {
@@ -19,8 +24,8 @@ const fill = (
 
         element.setAttribute("style", `fill:${color}`);
     };
-     
+
     if (callback) callback()
 }
 
-export default fill;
+export default requiresDOM(fill);

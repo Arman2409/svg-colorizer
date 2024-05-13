@@ -1,6 +1,14 @@
+import getAllElementColors from "../../helpers/getAllElementColors";
+import requiresDOM from "../../helpers/requiresDOM";
 import type { SvgColors, SvgColorsInSets } from "../../types/global";
 
-const getColors = (element: Element, onlyParent?: boolean): SvgColors => {
+const getColors = (
+    element: Element,
+    onlyParent?: boolean, 
+    asArray?: boolean): SvgColors | string[] => {
+    if (!element) {
+        throw new Error("SVG element should be provided");
+    }
     const colors: SvgColorsInSets = {
         fill: new Set(),
         stroke: new Set(),
@@ -9,8 +17,11 @@ const getColors = (element: Element, onlyParent?: boolean): SvgColors => {
 
     let elements;
 
-    if (onlyParent) elements = [element];
-    else elements = element.querySelectorAll("*");
+    if (onlyParent) {
+        elements = [element]
+    } else {
+        elements = element.querySelectorAll("*");
+    }
 
     for (const element of elements) {
         const styleAttribute = element.getAttribute("style");
@@ -43,7 +54,8 @@ const getColors = (element: Element, onlyParent?: boolean): SvgColors => {
     resultColors.stroke = Array.from(colors.stroke);
     resultColors.stop = Array.from(colors.stop);
 
+    if(asArray) return getAllElementColors(resultColors);
     return resultColors;
 };
 
-export default getColors;
+export default requiresDOM(getColors);

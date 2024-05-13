@@ -1,11 +1,15 @@
 import getAllElementColors from "../../helpers/getAllElementColors";
-import type { ReplaceDetail } from "../../types/global";
 import getColors from "./getColors";
+import requiresDOM from "../../helpers/requiresDOM";
+import type { ReplaceDetail } from "../../types/global";
 
 const replace = (
     svg: Element,
     detailsArray: ReplaceDetail[],
     callback?: Function): void => {
+    if(!svg || typeof detailsArray !== "object") {
+        throw new Error("SVG element and details array should be provided");
+    }
     let elemString = svg.outerHTML;
 
     const colors = getColors(svg);
@@ -26,4 +30,4 @@ const replace = (
     if (callback) callback();
 }
 
-export default replace;
+export default  requiresDOM(replace);

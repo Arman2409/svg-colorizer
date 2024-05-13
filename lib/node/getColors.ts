@@ -1,9 +1,15 @@
+import getAllElementColors from "../../helpers/getAllElementColors";
 import type { SvgColors, SvgColorsInSets } from "../../types/global";
 
 const getColors = (
   elementString: string,
-  onlyParent?: boolean
-): SvgColors => {
+  onlyParent?: boolean,
+  asArray?: boolean
+): SvgColors | string[] => {
+  if (typeof elementString !== "string") {
+    throw new Error("SVG element string should be provided");
+  }
+
   const colors: SvgColorsInSets = {
     fill: new Set<string>(),
     stroke: new Set<string>(),
@@ -44,12 +50,16 @@ const getColors = (
   if (strokeMatch) strokeMatch.forEach(match => colors.stroke.add(match.slice(8, -1)));
   if (stopMatch) stopMatch.forEach(match => colors.stop.add(match.slice(13, -1)));
 
+
   // Convert sets to arrays
-  return {
+  const resultColors = {
     fill: Array.from(colors.fill),
     stroke: Array.from(colors.stroke),
     stop: Array.from(colors.stop),
-  };
+  }
+
+  if(asArray) return getAllElementColors(resultColors);
+  return resultColors;
 }
 
 export default getColors;
