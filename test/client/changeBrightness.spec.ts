@@ -1,14 +1,15 @@
 // this test is incomplete
 
-import changeBrightness from "../../lib/client/changeBrightness";
+import changeBrightness from "../../lib/node/changeBrightness";
 import mockElement from "../_utils/mockElement";
 
-const initialSVG = mockElement("svg", false, { fill: "green" }) as Element;
+const initialSVG = mockElement("svg", true, { fill: "grey" }) as string;
 
-jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([initialSVG] as any);
+// jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([initialSVG] as any);
 
 test('should fill the SVG with given color', () => {
-    changeBrightness(initialSVG, 0.1);
+    const newSVG = changeBrightness(initialSVG, -0.5);
+    console.log(newSVG);
     
     expect({}).toStrictEqual({});
 });
