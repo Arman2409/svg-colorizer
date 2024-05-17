@@ -1,3 +1,4 @@
+import brightenColor from "../../helpers/brightenColor";
 import getColors from "./getColors";
 import replace from "./replace";
 
@@ -12,6 +13,7 @@ const changeBrightness = (
     
     const replaceDetails = colors.map((color:string) => {
         const newColor = brightenColor(color, factor);
+
         return {
             target: color,
             replace: newColor,
