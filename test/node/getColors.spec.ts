@@ -1,5 +1,5 @@
 import getColors from "../../lib/node/getColors";
-import mockElement from "../_utils/mockElement";
+import mockElement from "../utils/mockElement";
 
 const TEST_COLOR = "red";
 
