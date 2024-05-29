@@ -17,6 +17,11 @@
   ],
   "author": "Arman Ghazaryan",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "devDependencies": {
     "@types/jest": "^29.5.11",
     "@types/jsdom": "^21.1.6",

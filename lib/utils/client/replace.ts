@@ -17,9 +17,10 @@ const replace = (
 
     detailsArray.forEach(({ target, replace})=> {
         colorsArr.forEach(colorItem => {
-            console.log(colorItem);
-            
-            console.log(colorItem === target);
+            if(!target || !replace) {
+                return console.error("Invalid data provided for color replacement");
+            }
+            console.log(target, replace);
             
             if(colorItem === target) {
                 elemString = elemString.replaceAll(colorItem, replace);

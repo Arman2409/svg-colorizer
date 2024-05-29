@@ -189,8 +189,10 @@ var replace = (svg, detailsArray, callback) => {
   const colorsArr = getAllElementColors_default(colors);
   detailsArray.forEach(({ target, replace: replace4 }) => {
     colorsArr.forEach((colorItem) => {
-      console.log(colorItem);
-      console.log(colorItem === target);
+      if (!target || !replace4) {
+        return console.error("Invalid data provided for color replacement");
+      }
+      console.log(target, replace4);
       if (colorItem === target) {
         elemString = elemString.replaceAll(colorItem, replace4);
       }
@@ -213,6 +215,9 @@ var replace2 = (elemString, detailsArray, callback) => {
   const colors = getColors_default2(elemString, false, true);
   detailsArray.forEach(({ target, replace: replace4 }) => {
     colors.forEach((colorItem) => {
+      if (!target || !replace4) {
+        return console.error("Invalid data provided for color replacement");
+      }
       if (colorItem === target) {
         elemString = elemString.replaceAll(colorItem, replace4);
       }
