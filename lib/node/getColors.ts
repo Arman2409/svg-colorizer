@@ -23,7 +23,6 @@ const getColors = (
 
   if (onlyParent) {
     const firstTagPattern = /^<([^\s/>]+)(?:\s+[^>]*?)?>/;
-    console.log(elementString.match(firstTagPattern));
     const match = elementString.match(firstTagPattern) as string[];
     elementString = match[0];
   }

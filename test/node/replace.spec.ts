@@ -1,6 +1,6 @@
 import getColors from "../../lib/node/getColors";
 import replace from "../../lib/node/replace";
-import mockElement from "../_utils/mockElement";
+import mockElement from "../utils/mockElement";
 
 const INITIAL_COLOR = "green"
 const REPLACE_COLOR = "red";
