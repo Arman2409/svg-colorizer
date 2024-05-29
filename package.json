@@ -1,6 +1,6 @@
 {
   "name": "svg-colorizer",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Modify colors in SVG icons and illustrations for web and server-side applications.",
   "scripts": {
     "build": "npx tsup --config tsup.config.js",
