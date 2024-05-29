@@ -1,6 +1,6 @@
-import getAllElementColors from "../../helpers/getAllElementColors";
-import requiresDOM from "../../helpers/requiresDOM";
-import type { SvgColors, SvgColorsInSets } from "../../types/global";
+import getAllElementColors from "../../../helpers/getAllElementColors";
+import requiresDOM from "../../../helpers/requiresDOM";
+import type { SvgColors, SvgColorsInSets } from "../../../types/global";
 
 const getColors = (
     element: Element,

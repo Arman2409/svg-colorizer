@@ -1,4 +1,4 @@
-import randomColor from "../../lib/common/randomColor";
+import randomColor from "../lib/randomColor";
 
 describe('randomColor', () => {
     test("should return HEX value for HEX option", () => {

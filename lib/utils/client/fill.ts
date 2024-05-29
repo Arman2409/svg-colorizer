@@ -1,6 +1,6 @@
-import getAllElementColors from "../../helpers/getAllElementColors";
-import hasCommonElements from "../../helpers/hasCommonElements";
-import requiresDOM from "../../helpers/requiresDOM";
+import getAllElementColors from "../../../helpers/getAllElementColors";
+import hasCommonElements from "../../../helpers/hasCommonElements";
+import requiresDOM from "../../../helpers/requiresDOM";
 import getColors from "./getColors";
 
 const fill = (
