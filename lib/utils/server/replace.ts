@@ -1,5 +1,5 @@
 import getColors from "./getColors";
-import type { ReplaceDetail } from "../../types/global";
+import type { ReplaceDetail } from "../../../types/global";
 
 const replace = (
     elemString: string,

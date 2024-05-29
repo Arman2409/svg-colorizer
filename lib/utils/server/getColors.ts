@@ -1,5 +1,5 @@
-import getAllElementColors from "../../helpers/getAllElementColors";
-import type { SvgColors, SvgColorsInSets } from "../../types/global";
+import getAllElementColors from "../../../helpers/getAllElementColors";
+import type { SvgColors, SvgColorsInSets } from "../../../types/global";
 
 const getColors = (
   elementString: string,

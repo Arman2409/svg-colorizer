@@ -1,7 +1,7 @@
-import getAllElementColors from "../../helpers/getAllElementColors";
+import getAllElementColors from "../../../helpers/getAllElementColors";
 import getColors from "./getColors";
-import requiresDOM from "../../helpers/requiresDOM";
-import type { ReplaceDetail } from "../../types/global";
+import requiresDOM from "../../../helpers/requiresDOM";
+import type { ReplaceDetail } from "../../../types/global";
 
 const replace = (
     svg: Element,
@@ -17,6 +17,10 @@ const replace = (
 
     detailsArray.forEach(({ target, replace})=> {
         colorsArr.forEach(colorItem => {
+            console.log(colorItem);
+            
+            console.log(colorItem === target);
+            
             if(colorItem === target) {
                 elemString = elemString.replaceAll(colorItem, replace);
             }
