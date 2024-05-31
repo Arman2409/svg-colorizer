@@ -18,6 +18,7 @@ describe("getColors", () => {
     });
 
     test("returns server-side string SVG colors", () => {
+        // Make document undefined 
         Object.defineProperty(global, 'document', {
             value: undefined,
         })

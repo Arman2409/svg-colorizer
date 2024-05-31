@@ -21,6 +21,7 @@ describe("replace", () => {
     });
 
     test('replaces colors in server-side string SVG element', () => {
+        // Make document undefined 
         Object.defineProperty(global, 'document', {
             value: undefined,
         })

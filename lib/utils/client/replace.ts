@@ -19,6 +19,7 @@ const replace = (
 
     detailsArray.forEach(({ target, replace})=> {
         colorsArr.forEach(colorItem => {
+            // Check if valid data was provided for replacing 
             if(!target || !replace) {
                 return console.error("Invalid data provided for color replacement");
             }
@@ -29,11 +30,14 @@ const replace = (
         })
     })
 
+    // Create new SVG element with DOM Parser
     const domParser = new DOMParser();
     const elemDOM = domParser.parseFromString(`<html>${elemString}<html>`, "text/html");
     const updatedSVG = elemDOM.querySelector("svg") as Element;
+
+    // Update the SVG element by updating it's outer HTMl 
     svg.outerHTML = updatedSVG.outerHTML;
-    if (callback) callback();
+    if (typeof callback === "function") callback();
 }
 
 export default  requiresDOM(replace);

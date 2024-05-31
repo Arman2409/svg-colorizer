@@ -18,6 +18,7 @@ const fill = (
     for (const element of elements) {
         const elemColors = getColors(element, true);  
         
+        // Check if the element has ignored colors 
         if (ignoreColors) {
             if (hasCommonElements(
                 getAllElementColors(elemColors), ignoreColors
@@ -25,10 +26,11 @@ const fill = (
                 continue;
             }
         }
+
         if(element.hasAttribute("style")) {            
             const styleAttribute = element.getAttribute("style");
 
-            if (styleAttribute) {      
+            if (styleAttribute) {
                 Object.keys(elemColors).forEach((colorType:string) => {
                     if (styleAttribute.includes(colorType)) {
                         const currentColor = getStyleValueFromLine(styleAttribute, colorType);
@@ -45,7 +47,7 @@ const fill = (
         }
     };
 
-    if (callback) callback()
+    if (typeof callback === "function") callback()
 }
 
 export default requiresDOM(fill);

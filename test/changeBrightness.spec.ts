@@ -24,6 +24,7 @@ describe("changeBrightness", () => {
     });
 
     test('changes brightness for server-side string SVG', () => {
+        // Make document undefined 
         Object.defineProperty(global, 'document', {
             value: undefined,
         })

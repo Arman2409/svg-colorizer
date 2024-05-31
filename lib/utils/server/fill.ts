@@ -12,11 +12,12 @@ const fill = (
     const colors = getColors(elementString, false, true) as string[];
 
     colors.forEach(colorItem => {
+        // Check if the element has ignored colors 
         if (ignoreColors && ignoreColors?.includes(colorItem)) return;
         elementString = elementString.replaceAll(colorItem, color);
     })
 
-    if (callback) callback()
+    if (typeof callback === "function") callback()
     return elementString;
 }
 

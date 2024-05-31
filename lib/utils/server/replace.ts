@@ -13,6 +13,7 @@ const replace = (
 
     detailsArray.forEach(({ target, replace }) => {
         colors.forEach(colorItem => {
+            // Check if valid data was provided for replacing 
             if(!target || !replace) {
                 return console.error("Invalid data provided for color replacement");
             }
@@ -22,7 +23,7 @@ const replace = (
         })
     })
 
-    if (callback) callback()
+    if (typeof callback === "function") callback()
     return elemString;
 }
 

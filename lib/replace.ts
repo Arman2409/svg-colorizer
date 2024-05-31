@@ -6,6 +6,7 @@ const replace = (
     svg: Element | string,
     detailsArray: ReplaceDetail[],
     callback?: Function) => {
+    // Check whether this is client or server environment
     if (typeof document !== 'undefined') {
         return replaceClient(svg, detailsArray, callback);
     } else {

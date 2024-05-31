@@ -29,7 +29,8 @@ const getColors = (
 
         // Extract color values from inline styles
         if (styleAttribute) {
-
+            
+            // Check for each possible style indicator !! this is not quite optimal and need updating
             if (styleAttribute.includes("fill")) {
                 const color = getStyleValueFromLine(styleAttribute, "fill");
                 colors.fill.add(color as string);
@@ -46,6 +47,7 @@ const getColors = (
             }
         }
 
+        // Check for each possible style indicator !! this is not quite optimal and need updating
         if (element.hasAttribute("fill")) {
             colors.fill.add(element.getAttribute("fill") || "");
         }

@@ -20,6 +20,7 @@ describe("fill", () => {
     });
 
     test('fills with color for server-side HTML string', () => {
+        // Make document undefined 
         Object.defineProperty(global, 'document', {
             value: undefined,
         })
