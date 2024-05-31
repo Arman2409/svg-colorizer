@@ -11,13 +11,14 @@ const SVGString = mockElement("svg", true, { fill: MAIN_FILL_COLOR }) as string;
 jest.spyOn(mainSVGElement, 'querySelectorAll').mockReturnValue([mainSVGElement, childSVGElement] as any);
 
 describe("getColors", () => {
-    test('should return colors HTML SVG element', () => {
+    test("returns client-side HTML SVG colors", () => {
         const colors = getColors(mainSVGElement);
 
         expect(colors?.fill).toStrictEqual([MAIN_FILL_COLOR, CHILD_FILL_COLOR]);
     });
 
-    test('should implement fill color for server side', () => {
+    test("returns server-side string SVG colors", () => {
+        // Make document undefined 
         Object.defineProperty(global, 'document', {
             value: undefined,
         })

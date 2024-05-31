@@ -12,14 +12,15 @@ jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([initialSVG] as any);
 jest.spyOn(filledSVG, 'querySelectorAll').mockReturnValue([filledSVG] as any);
 
 describe("fill", () => {
-    test('should implement fill color for client side', () => {
+    test('fills with color for client-side HTML SVG', () => {
         fill(initialSVG, FILL_COLOR);
         const filledColors = getColors(filledSVG);
 
         expect(filledColors?.fill).toStrictEqual([FILL_COLOR]);
     });
 
-    test('should implement fill color for server side', () => {
+    test('fills with color for server-side HTML string', () => {
+        // Make document undefined 
         Object.defineProperty(global, 'document', {
             value: undefined,
         })

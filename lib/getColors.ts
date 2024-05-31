@@ -5,6 +5,7 @@ const getColors = (
     element: Element | string,
     onlyParent?: boolean,
     asArray?: boolean) => {
+    // Check whether this is client or server environment
     if (typeof document !== 'undefined') {
         return getColorsOfSVG(element, onlyParent, asArray);
     } else {

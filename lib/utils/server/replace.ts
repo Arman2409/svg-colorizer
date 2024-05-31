@@ -13,13 +13,17 @@ const replace = (
 
     detailsArray.forEach(({ target, replace }) => {
         colors.forEach(colorItem => {
+            // Check if valid data was provided for replacing 
+            if(!target || !replace) {
+                return console.error("Invalid data provided for color replacement");
+            }
             if (colorItem === target) {
                 elemString = elemString.replaceAll(colorItem, replace);
             }
         })
     })
 
-    if (callback) callback()
+    if (typeof callback === "function") callback()
     return elemString;
 }
 

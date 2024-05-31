@@ -1,3 +1,5 @@
+import tinycolor from "tinycolor2";
+
 import getAllElementColors from "../../../helpers/getAllElementColors";
 import getColors from "./getColors";
 import requiresDOM from "../../../helpers/requiresDOM";
@@ -17,21 +19,25 @@ const replace = (
 
     detailsArray.forEach(({ target, replace})=> {
         colorsArr.forEach(colorItem => {
-            console.log(colorItem);
-            
-            console.log(colorItem === target);
-            
-            if(colorItem === target) {
+            // Check if valid data was provided for replacing 
+            if(!target || !replace) {
+                return console.error("Invalid data provided for color replacement");
+            }
+
+            if(colorItem === target || colorItem === tinycolor(colorItem).toHex()) {
                 elemString = elemString.replaceAll(colorItem, replace);
             }
         })
     })
 
+    // Create new SVG element with DOM Parser
     const domParser = new DOMParser();
     const elemDOM = domParser.parseFromString(`<html>${elemString}<html>`, "text/html");
     const updatedSVG = elemDOM.querySelector("svg") as Element;
+
+    // Update the SVG element by updating it's outer HTMl 
     svg.outerHTML = updatedSVG.outerHTML;
-    if (callback) callback();
+    if (typeof callback === "function") callback();
 }
 
 export default  requiresDOM(replace);

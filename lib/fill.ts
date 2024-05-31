@@ -6,6 +6,7 @@ const fill = (
     color?: string,
     ignoreColors?: string[],
     callback?: Function) => {  
+    // Check whether this is client or server environment
     if (typeof document !== 'undefined') {
         return fillSVG(elementStringOrElement, color, ignoreColors, callback);
     } else {

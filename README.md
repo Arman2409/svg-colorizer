@@ -33,9 +33,9 @@ const svgWithNewColor = fill(svgString, "red");
 ```
 
 ```javascript
-import { randomColor } from "svg-colorizer"
+import { getRandomColor } from "svg-colorizer"
 
-const newColor = randomColor();
+const newColor = getRandomColor();
 ```
 
 ## Available functions
@@ -45,7 +45,7 @@ const newColor = randomColor();
 - [getColors](#getColors)
 - [replace](#replace)
 - [changeBrightness](#changeBrightness)
-- [randomColor](#randomColor)
+- [getRandomColor](#getRandomColor)
 
 
 #### fill(svg, color, [ignoreColors], [callback])
@@ -101,7 +101,7 @@ This function replaces specific colors within the SVG element based on a configu
 * `factor`: the amount of brightness change from -255 to 255, the bigger the factor, the brighter the image will become.
 
 
-#### randomColor([format])
+#### getRandomColor([format])
 
 This function generates a random color and returns it in either hexadecimal notation or RGB format.
 

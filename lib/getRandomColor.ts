@@ -1,5 +1,6 @@
-const randomColor = (
+const getRandomColor = (
     format: "hex" | "rgb" = "hex"): string => {
+    // Check if valid value provided for format 
     if(!["hex" , "rgb"].includes(format)) {
         throw new Error("Invalid format. Format should be 'hex' or 'rgb'");
     }
@@ -17,8 +18,8 @@ const randomColor = (
         return `rgb(${r}, ${g}, ${b})`;
     }
 
-    throw new Error("Invalid format. Supported formats are 'hex' and 'rgb'.");
+    return "";
 }
 
 
-export default randomColor;
+export default getRandomColor;

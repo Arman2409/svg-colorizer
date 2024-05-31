@@ -1,14 +1,14 @@
-import randomColor from "../lib/randomColor";
+import getRandomColor from "../lib/getRandomColor";
 
 describe('randomColor', () => {
-    test("should return HEX value for HEX option", () => {
-        const hexColor = randomColor("hex");
+    test("returns HEX value for HEX option", () => {
+        const hexColor = getRandomColor("hex");
 
         expect(hexColor.startsWith("#")).toBeTruthy();
     })
 
-    test("should return RGB value for RGB option", () => {
-        const rgbColor = randomColor("rgb");
+    test("returns RGB value for RGB option", () => {
+        const rgbColor = getRandomColor("rgb");
 
         expect(rgbColor.startsWith("rgb")).toBeTruthy();
     })

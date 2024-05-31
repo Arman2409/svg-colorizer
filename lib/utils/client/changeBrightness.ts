@@ -11,6 +11,7 @@ const changeBrightness = (
         
     const colors = getColors(svgElement, false, true) as string[];
     
+    // Get new replaceDetails with changed colors 
     const replaceDetails = colors.map((color:string) => {
         const newColor = brightenColor(color, factor);
         
