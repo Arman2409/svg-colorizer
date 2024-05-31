@@ -39,7 +39,7 @@ const newColor = getRandomColor();
 ```
 
 ## Available functions
-* Note that this functions will use either DOM API or string manipulation for achieving their goal, depending whether they are used in client side or server side and DOM API is available or not.
+ `This functions will use either DOM API or string manipulation for achieving their goal, depending whether they are used in client side or server side.`
 
 - [fill](#fill)
 - [getColors](#getColors)
@@ -48,7 +48,7 @@ const newColor = getRandomColor();
 - [getRandomColor](#getRandomColor)
 
 
-#### fill(svg, color, [ignoreColors], [callback])
+#### fill(svg, color, [ignoreColors], [callback]){#fill}
 
 This function fills the specified SVG element with a given color.
 
@@ -60,7 +60,7 @@ This function fills the specified SVG element with a given color.
 * `callback` (optional): A function that executes after the fill operation is complete.
 
 
-#### replace(svg, detailsArray, [callback])
+#### replace(svg, detailsArray, [callback]){#replace}
 
 This function replaces specific colors within the SVG element based on a configuration.
 
@@ -73,7 +73,7 @@ This function replaces specific colors within the SVG element based on a configu
 * `callback` (optional): A function that executes after the replace operation is complete.
 
 
-#### getColors(svg, [onlyParent])
+#### getColors(svg, [onlyParent]){getColors}
 
 This function extracts the colors used in the SVG element and returns them as an object.
 
@@ -91,7 +91,7 @@ An object with keys:
 * `stop`: An array containing all stop color strings used in the SVG for gradients (if applicable).
 
 
-#### changeBrightness(svg, factor)
+#### changeBrightness(svg, factor){changeBrightness}
 
 This function replaces specific colors within the SVG element based on a configuration.
 
@@ -101,7 +101,7 @@ This function replaces specific colors within the SVG element based on a configu
 * `factor`: the amount of brightness change from -255 to 255, the bigger the factor, the brighter the image will become.
 
 
-#### getRandomColor([format])
+#### getRandomColor([format]){getRandomColor}
 
 This function generates a random color and returns it in either hexadecimal notation or RGB format.
 
