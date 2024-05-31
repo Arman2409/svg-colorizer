@@ -16,14 +16,14 @@ const SVGString = mockElement("svg", true, { fill: initialColor }) as string;
 jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([changedSVG] as any);
 
 describe("changeBrightness", () => {
-    test('should change brightness for client side', () => {
+    test('changes brightness for client-side HTML SVG', () => {
         changeBrightness(initialSVG, 100);
         const colors = getColors(initialSVG);
 
         expect(colors?.fill).toStrictEqual([expectedColor]);
     });
 
-    test('should implement fill color for server side', () => {
+    test('changes brightness for server-side string SVG', () => {
         Object.defineProperty(global, 'document', {
             value: undefined,
         })

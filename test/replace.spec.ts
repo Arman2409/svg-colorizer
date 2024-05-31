@@ -13,14 +13,14 @@ const SVGString = mockElement("svg", true, { fill: MAIN_FILL_COLOR }) as string;
 jest.spyOn(replacedSVGElement, 'querySelectorAll').mockReturnValue([replacedSVGElement] as any);
 
 describe("replace", () => {
-    test('should replace colors HTML SVG element', () => {
+    test('replaces colors in client-side HTML SVG element', () => {
         replace(mainSVGElement, [{target: MAIN_FILL_COLOR, replace: "blue"}])
         const colors = getColors(replacedSVGElement);
 
         expect(colors?.fill).toStrictEqual([REPLACE_COLOR]);
     });
 
-    test('should implement fill color for server side', () => {
+    test('replaces colors in server-side string SVG element', () => {
         Object.defineProperty(global, 'document', {
             value: undefined,
         })
@@ -29,5 +29,4 @@ describe("replace", () => {
 
         expect(colors?.fill).toStrictEqual([REPLACE_COLOR]);
     });
-
 })

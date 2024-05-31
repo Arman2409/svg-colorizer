@@ -1,10 +1,11 @@
 import getAllElementColors from "../../../helpers/getAllElementColors";
+import getStyleValueFromLine from "../../../helpers/getStyleValueFromLine";
 import requiresDOM from "../../../helpers/requiresDOM";
 import type { SvgColors, SvgColorsInSets } from "../../../types/global";
 
 const getColors = (
     element: Element,
-    onlyParent?: boolean, 
+    onlyParent?: boolean,
     asArray?: boolean): SvgColors | string[] => {
     if (!element) {
         throw new Error("SVG element should be provided");
@@ -25,11 +26,23 @@ const getColors = (
 
     for (const element of elements) {
         const styleAttribute = element.getAttribute("style");
+
+        // Extract color values from inline styles
         if (styleAttribute) {
-            // Extract color values from inline styles
-            const colorMatches = styleAttribute.match(/fill:(#[a-f0-9]{3,6})|(rgb\(\d+,\s*\d+,\s*\d+\))/gi);
-            if (colorMatches) {
-                colorMatches.forEach(color => colors.fill.add(color.slice(5)));
+
+            if (styleAttribute.includes("fill")) {
+                const color = getStyleValueFromLine(styleAttribute, "fill");
+                colors.fill.add(color as string);
+            }
+
+            if (styleAttribute.includes("stroke")) {
+                const color = getStyleValueFromLine(styleAttribute, "stroke");
+                colors.stroke.add(color as string);
+            }
+
+            if (styleAttribute.includes("stop-color")) {
+                const color = getStyleValueFromLine(styleAttribute, "stop-color");
+                colors.stop.add(color as string);
             }
         }
 
@@ -49,13 +62,15 @@ const getColors = (
         stroke: [],
         stop: [],
     }
+
     // Convert Sets to arrays 
     resultColors.fill = Array.from(colors.fill);
     resultColors.stroke = Array.from(colors.stroke);
     resultColors.stop = Array.from(colors.stop);
 
-    if(asArray) return getAllElementColors(resultColors);
+    if (asArray) return getAllElementColors(resultColors);
     return resultColors;
 };
 
 export default requiresDOM(getColors);
+

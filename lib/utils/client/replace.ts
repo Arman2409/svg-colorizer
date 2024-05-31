@@ -1,3 +1,5 @@
+import tinycolor from "tinycolor2";
+
 import getAllElementColors from "../../../helpers/getAllElementColors";
 import getColors from "./getColors";
 import requiresDOM from "../../../helpers/requiresDOM";
@@ -20,9 +22,8 @@ const replace = (
             if(!target || !replace) {
                 return console.error("Invalid data provided for color replacement");
             }
-            console.log(target, replace);
-            
-            if(colorItem === target) {
+
+            if(colorItem === target || colorItem === tinycolor(colorItem).toHex()) {
                 elemString = elemString.replaceAll(colorItem, replace);
             }
         })
