@@ -2,7 +2,7 @@ import modifyColor from "../helpers/modifyColor";
 import getColors from "./getColors";
 import replace from "./replace";
 
-const changeBrightness = (
+const changeAlpha = (
     svg: Element | string,
     factor: number): string | void => {
     // Check if DOM API is available  
@@ -16,15 +16,14 @@ const changeBrightness = (
 
     // Get new replaceDetails with changed colors 
     const replaceDetails = colors.map((color: string) => {
-        const newColor = modifyColor(color, "brightness", factor);
+        const newColor = modifyColor(color, "alpha", factor);
 
         return {
             target: color,
             replace: newColor,
         }
     })
-
     return replace(svg, replaceDetails);    
 }
 
-export default changeBrightness;
+export default changeAlpha;

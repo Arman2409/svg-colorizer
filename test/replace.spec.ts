@@ -26,7 +26,7 @@ describe("replace", () => {
             value: undefined,
         })
         const replacedSVGString = replace(SVGString, [{target: MAIN_FILL_COLOR, replace: REPLACE_COLOR}])
-        const colors = getColors(replacedSVGString);
+        const colors = getColors(replacedSVGString as string);
 
         expect(colors?.fill).toStrictEqual([REPLACE_COLOR]);
     });

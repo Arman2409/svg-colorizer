@@ -25,7 +25,7 @@ describe("fill", () => {
             value: undefined,
         })
         const filledSVG = fill(initialSVGString, FILL_COLOR);
-        const replacedColors = getColors(filledSVG);
+        const replacedColors = getColors(filledSVG as string);
 
         expect(replacedColors?.fill).toStrictEqual([FILL_COLOR]);
     });

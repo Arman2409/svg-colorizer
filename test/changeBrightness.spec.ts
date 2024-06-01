@@ -30,7 +30,7 @@ describe("changeBrightness", () => {
         })
 
         const changedSVGString = changeBrightness(SVGString, changeAmout)
-        const colors = getColors(changedSVGString);
+        const colors = getColors(changedSVGString as string);
 
         expect(colors?.fill).toStrictEqual([expectedColor]);
     });
