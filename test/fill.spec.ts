@@ -4,6 +4,7 @@ import mockElement from "./utils/mockElement";
 
 const FILL_COLOR = "red";
 
+// Mock client and server side elements
 const initialSVG = mockElement("svg", false, { fill: "green" }) as Element;
 const filledSVG = mockElement("svg", false, { fill: FILL_COLOR }) as Element;
 const initialSVGString = mockElement("svg", true, { fill: "blue" }) as string;
@@ -25,7 +26,7 @@ describe("fill", () => {
             value: undefined,
         })
         const filledSVG = fill(initialSVGString, FILL_COLOR);
-        const replacedColors = getColors(filledSVG);
+        const replacedColors = getColors(filledSVG as string);
 
         expect(replacedColors?.fill).toStrictEqual([FILL_COLOR]);
     });

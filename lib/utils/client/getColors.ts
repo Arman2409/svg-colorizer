@@ -1,6 +1,5 @@
 import getAllElementColors from "../../../helpers/getAllElementColors";
 import getStyleValueFromLine from "../../../helpers/getStyleValueFromLine";
-import requiresDOM from "../../../helpers/requiresDOM";
 import type { SvgColors, SvgColorsInSets } from "../../../types/global";
 
 const getColors = (
@@ -74,5 +73,5 @@ const getColors = (
     return resultColors;
 };
 
-export default requiresDOM(getColors);
+export default getColors;
 

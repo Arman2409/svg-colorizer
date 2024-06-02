@@ -8,16 +8,15 @@ const changeAmout = 100;
 const initialColor = `rgb(${initialValue}, 0, 0)`;
 const expectedColor = `rgb(${initialValue + changeAmout}, ${changeAmout}, ${changeAmout})`;
 
+// Mock client and server side elements
 const initialSVG = mockElement("svg", false, { fill:  initialColor}) as Element;
-const changedSVG = mockElement("svg", false, { fill:  expectedColor}) as Element;
-
 const SVGString = mockElement("svg", true, { fill: initialColor }) as string;
 
-jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([changedSVG] as any);
+jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([initialSVG] as any);
 
 describe("changeBrightness", () => {
     test('changes brightness for client-side HTML SVG', () => {
-        changeBrightness(initialSVG, 100);
+        changeBrightness(initialSVG, changeAmout);
         const colors = getColors(initialSVG);
 
         expect(colors?.fill).toStrictEqual([expectedColor]);
@@ -30,7 +29,7 @@ describe("changeBrightness", () => {
         })
 
         const changedSVGString = changeBrightness(SVGString, changeAmout)
-        const colors = getColors(changedSVGString);
+        const colors = getColors(changedSVGString as string);
 
         expect(colors?.fill).toStrictEqual([expectedColor]);
     });

@@ -1,17 +1,18 @@
-import { ReplaceDetail } from "../types/global";
-import replaceClient from "./utils/client/replace";
-import replaceServer from "./utils/server/replace";
+import fillOrReplaceClient from "./utils/client/fillOrReplace";
+import fillOrReplaceServer from "./utils/server/fillOrReplace";
+import type { ReplaceDetail } from "../types/global";
 
 const replace = (
     svg: Element | string,
     detailsArray: ReplaceDetail[],
-    callback?: Function) => {
+    callback?: Function): string|void => {
+
     // Check whether this is client or server environment
     if (typeof document !== 'undefined') {
-        return replaceClient(svg, detailsArray, callback);
+        return fillOrReplaceClient(svg as Element,"replace", undefined, undefined, detailsArray, callback);
     } else {
-        return replaceServer(svg as string, detailsArray, callback);
+        return fillOrReplaceServer(svg as string, "replace", undefined, undefined, detailsArray, callback);
     }
 }
 
-export default replace;  
+export default replace;

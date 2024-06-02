@@ -39,16 +39,17 @@ const newColor = getRandomColor();
 ```
 
 ## Available functions
-* Note that this functions will use either DOM API or string manipulation for achieving their goal, depending whether they are used in client side or server side and DOM API is available or not.
+ ` This functions will use either DOM API or string manipulation for achieving their goal, depending whether they are used in client side or server side.`
 
 - [fill](#fill)
 - [getColors](#getColors)
 - [replace](#replace)
 - [changeBrightness](#changeBrightness)
+- [changeAlpha](#changeAlpha)
 - [getRandomColor](#getRandomColor)
 
 
-#### fill(svg, color, [ignoreColors], [callback])
+#### <span id="fill"> fill(svg, color, [ignoreColors], [callback]) </span>
 
 This function fills the specified SVG element with a given color.
 
@@ -60,7 +61,7 @@ This function fills the specified SVG element with a given color.
 * `callback` (optional): A function that executes after the fill operation is complete.
 
 
-#### replace(svg, detailsArray, [callback])
+#### <span id="replace"> replace(svg, detailsArray, [callback]) </span>
 
 This function replaces specific colors within the SVG element based on a configuration.
 
@@ -73,7 +74,7 @@ This function replaces specific colors within the SVG element based on a configu
 * `callback` (optional): A function that executes after the replace operation is complete.
 
 
-#### getColors(svg, [onlyParent])
+#### <span id="getColors"> getColors(svg, [onlyParent]) </span>
 
 This function extracts the colors used in the SVG element and returns them as an object.
 
@@ -91,17 +92,27 @@ An object with keys:
 * `stop`: An array containing all stop color strings used in the SVG for gradients (if applicable).
 
 
-#### changeBrightness(svg, factor)
+#### <span id="changeBrightness">changeBrightness(svg, factor)</span>
 
-This function replaces specific colors within the SVG element based on a configuration.
+This function changes the brightness of SVG element by replacing all colors in it.
 
 **Arguments:**
 
 * `svg`: SVG Element which should be HTML element in DOM available environment and string otherwise.
-* `factor`: the amount of brightness change from -255 to 255, the bigger the factor, the brighter the image will become.
+* `factor`: the amount of brightness change from -255 to 255, the bigger the factor, the brighter the image.
 
 
-#### getRandomColor([format])
+#### <span id="changeAlpha">changeAlpha(svg, amount)</span>
+
+This function changes the alpha of SVG element by replacing all colors in it.
+
+**Arguments:**
+
+* `svg`: SVG Element which should be HTML element in DOM available environment and string otherwise.
+* `factor`: the amount of brightness change from -1 to 1, the bigger the factor, the higher the alpha.
+
+
+#### <span id="getRandomColor">getRandomColor([format])</span>
 
 This function generates a random color and returns it in either hexadecimal notation or RGB format.
 
@@ -112,3 +123,4 @@ This function generates a random color and returns it in either hexadecimal nota
 **Returns:**
 
 A string representing the randomly generated color in the specified format (hexadecimal or RGB).
+

@@ -2,6 +2,7 @@ import fill from "./lib/fill";
 import replace from "./lib/replace";
 import getColors from "./lib/getColors";
 import changeBrightness from "./lib/changeBrightness";
+import changeAlpha from "./lib/changeAlpha";
 import getRandomColor from "./lib/getRandomColor";
 
 export {
@@ -9,6 +10,7 @@ export {
     replace,
     getColors,
     changeBrightness,
+    changeAlpha,
     getRandomColor
 }
 
@@ -17,5 +19,6 @@ export default {
     replace,
     getColors,
     changeBrightness,
+    changeAlpha,
     getRandomColor
 }
