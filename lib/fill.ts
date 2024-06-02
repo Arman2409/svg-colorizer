@@ -1,5 +1,5 @@
 import fillOrReplaceClient from './utils/client/fillOrReplace';
-import fillSVGServer from './utils/server/fill';
+import fillSVGServer from './utils/server/fillOrReplace';
 
 const fill = (
     elementStringOrElement?: Element | string,
@@ -10,7 +10,7 @@ const fill = (
     if (typeof document !== 'undefined') {
         return fillOrReplaceClient(elementStringOrElement as Element, "fill", color, ignoreColors, undefined, callback);
     } else {
-        return fillSVGServer(elementStringOrElement as any, color as any, ignoreColors, callback);
+        return fillSVGServer(elementStringOrElement as string, "fill", color as any, ignoreColors, undefined, callback);
     }
 }
 

@@ -5,6 +5,7 @@ import mockElement from "./utils/mockElement";
 const MAIN_FILL_COLOR = "red";
 const REPLACE_COLOR = "green";
 
+// Mock client and server side elements
 const mainSVGElement = mockElement("svg", false, { fill: MAIN_FILL_COLOR }) as Element;
 const replacedSVGElement = mockElement("svg", false, {fill: REPLACE_COLOR}) as Element;
 
