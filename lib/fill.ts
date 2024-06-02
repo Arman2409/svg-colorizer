@@ -10,7 +10,7 @@ const fill = (
     if (typeof document !== 'undefined') {
         return fillOrReplaceClient(elementStringOrElement as Element, "fill", color, ignoreColors, undefined, callback);
     } else {
-        return fillSVGServer(elementStringOrElement as string, "fill", color as any, ignoreColors, undefined, callback);
+        return fillSVGServer(elementStringOrElement as string, "fill", color, ignoreColors, undefined, callback);
     }
 }
 

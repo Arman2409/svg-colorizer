@@ -45,10 +45,11 @@ const newColor = getRandomColor();
 - [getColors](#getColors)
 - [replace](#replace)
 - [changeBrightness](#changeBrightness)
+- [changeAlpha](#changeAlpha)
 - [getRandomColor](#getRandomColor)
 
 
-#### fill(svg, color, [ignoreColors], [callback])
+#### <p id="fill"> fill(svg, color, [ignoreColors], [callback]) </p>
 
 This function fills the specified SVG element with a given color.
 
@@ -93,12 +94,22 @@ An object with keys:
 
 #### changeBrightness(svg, factor)
 
-This function replaces specific colors within the SVG element based on a configuration.
+This function changes the brightness of SVG element by replacing all colors in it.
 
 **Arguments:**
 
 * `svg`: SVG Element which should be HTML element in DOM available environment and string otherwise.
-* `factor`: the amount of brightness change from -255 to 255, the bigger the factor, the brighter the image will become.
+* `factor`: the amount of brightness change from -255 to 255, the bigger the factor, the brighter the image.
+
+
+#### changeAlpha(svg, amount)
+
+This function changes the alpha of SVG element by replacing all colors in it.
+
+**Arguments:**
+
+* `svg`: SVG Element which should be HTML element in DOM available environment and string otherwise.
+* `factor`: the amount of brightness change from -1 to 1, the bigger the factor, the higher the alpha.
 
 
 #### getRandomColor([format])
@@ -112,3 +123,4 @@ This function generates a random color and returns it in either hexadecimal nota
 **Returns:**
 
 A string representing the randomly generated color in the specified format (hexadecimal or RGB).
+
