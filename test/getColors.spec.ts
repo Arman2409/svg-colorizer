@@ -9,7 +9,7 @@ const mainSVGElement = mockElement("svg", false, { fill: MAIN_FILL_COLOR }) as E
 const childSVGElement = mockElement("svg", false, { fill: CHILD_FILL_COLOR }) as Element;
 const SVGString = mockElement("svg", true, { fill: MAIN_FILL_COLOR }) as string;
 
-jest.spyOn(mainSVGElement, 'querySelectorAll').mockReturnValue([mainSVGElement, childSVGElement] as any);
+jest.spyOn(mainSVGElement, 'querySelectorAll').mockReturnValue([mainSVGElement, childSVGElement] as unknown as NodeListOf<Element>);
 
 describe("getColors", () => {
     test("returns client-side HTML SVG colors", () => {

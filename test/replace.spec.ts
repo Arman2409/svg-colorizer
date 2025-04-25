@@ -11,7 +11,7 @@ const replacedSVGElement = mockElement("svg", false, {fill: REPLACE_COLOR}) as E
 
 const SVGString = mockElement("svg", true, { fill: MAIN_FILL_COLOR }) as string;
 
-jest.spyOn(replacedSVGElement, 'querySelectorAll').mockReturnValue([replacedSVGElement] as any);
+jest.spyOn(replacedSVGElement, 'querySelectorAll').mockReturnValue([replacedSVGElement] as unknown as NodeListOf<Element>);
 
 describe("replace", () => {
     test('replaces colors in client-side HTML SVG element', () => {

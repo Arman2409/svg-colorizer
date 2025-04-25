@@ -9,8 +9,8 @@ const initialSVG = mockElement("svg", false, { fill: "green" }) as Element;
 const filledSVG = mockElement("svg", false, { fill: FILL_COLOR }) as Element;
 const initialSVGString = mockElement("svg", true, { fill: "blue" }) as string;
 
-jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([initialSVG] as any);
-jest.spyOn(filledSVG, 'querySelectorAll').mockReturnValue([filledSVG] as any);
+jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([initialSVG] as unknown as NodeListOf<Element>);
+jest.spyOn(filledSVG, 'querySelectorAll').mockReturnValue([filledSVG] as unknown as NodeListOf<Element>);
 
 describe("fill", () => {
     test('fills with color for client-side HTML SVG', () => {

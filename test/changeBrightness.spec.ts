@@ -12,7 +12,7 @@ const expectedColor = `rgb(${initialValue + changeAmout}, ${changeAmout}, ${chan
 const initialSVG = mockElement("svg", false, { fill:  initialColor}) as Element;
 const SVGString = mockElement("svg", true, { fill: initialColor }) as string;
 
-jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([initialSVG] as any);
+jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([initialSVG] as unknown as NodeListOf<Element>);
 
 describe("changeBrightness", () => {
     test('changes brightness for client-side HTML SVG', () => {

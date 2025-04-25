@@ -11,7 +11,7 @@ const alphaChange = -0.5;
 const HtmlSVG = mockElement("svg", false, { fill: getRandomColor() }) as Element;
 const SVGString = mockElement("svg", true, { fill: getRandomColor() }) as string;
 
-jest.spyOn(HtmlSVG, 'querySelectorAll').mockReturnValue([HtmlSVG] as any);
+jest.spyOn(HtmlSVG, 'querySelectorAll').mockReturnValue([HtmlSVG] as unknown as NodeListOf<Element>);
 
 describe("changeAlpha", () => {
     test('changes alpha for client-side HTML SVG', () => {
