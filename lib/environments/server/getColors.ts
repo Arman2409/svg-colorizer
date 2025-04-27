@@ -1,5 +1,5 @@
-import getAllElementColors from "../../../helpers/getAllElementColors";
-import type { SvgColors, SvgColorsInSets } from "../../../types/global";
+import getAllElementColors from "../../helpers/getAllElementColors";
+import type { SvgColors, SvgColorsInSets } from "../../types/global";
 
 const getColors = (
   elementString: string,
@@ -45,6 +45,7 @@ const getColors = (
   const fillMatch = elementString.match(/fill="([^"]+)"/gi);
   const strokeMatch = elementString.match(/stroke="([^"]+)"/gi);
   const stopMatch = elementString.match(/stop-color="([^"]+)"/gi);
+  
   if (fillMatch) fillMatch.forEach(match => colors.fill.add(match.slice(6, -1)));
   if (strokeMatch) strokeMatch.forEach(match => colors.stroke.add(match.slice(8, -1)));
   if (stopMatch) stopMatch.forEach(match => colors.stop.add(match.slice(13, -1)));

@@ -1,9 +1,9 @@
-import modifyColor from "../helpers/modifyColor";
+import modifyColor from "./helpers/modifyColor";
 import getColors from "./getColors";
 import replace from "./replace";
 
 const changeBrightness = (
-    svg: Element | string,
+    svg: SVGElement | Element | string,
     factor: number): string | void => {
     // Check if DOM API is available  
     const isClient = document !== undefined;

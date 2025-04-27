@@ -1,9 +1,9 @@
-import getAllElementColors from "../../../helpers/getAllElementColors";
-import getStyleValueFromLine from "../../../helpers/getStyleValueFromLine";
-import type { SvgColors, SvgColorsInSets } from "../../../types/global";
+import getAllElementColors from "../../helpers/getAllElementColors";
+import getStyleValueFromLine from "../../helpers/getStyleValueFromLine";
+import type { SvgColors, SvgColorsInSets } from "../../types/global";
 
 const getColors = (
-    element: Element,
+    element: SVGElement | Element,
     onlyParent?: boolean,
     asArray?: boolean): SvgColors | string[] => {
     if (!element) {

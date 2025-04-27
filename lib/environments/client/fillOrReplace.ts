@@ -1,8 +1,8 @@
-import getAllElementColors from "../../../helpers/getAllElementColors";
-import getStyleValueFromLine from "../../../helpers/getStyleValueFromLine";
-import hasCommonElements from "../../../helpers/hasCommonElements";
+import getAllElementColors from "../../helpers/getAllElementColors";
+import getStyleValueFromLine from "../../helpers/getStyleValueFromLine";
+import hasCommonElements from "../../helpers/hasCommonElements";
 import getColors from "./getColors";
-import type { ReplaceDetail, SvgColors } from "../../../types/global";
+import type { ReplaceDetail, SvgColors } from "../../types/global";
 
 const fillOrReplace = (
     svg: Element,

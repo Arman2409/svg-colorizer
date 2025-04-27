@@ -1,9 +1,9 @@
-import fillOrReplaceClient from "./utils/client/fillOrReplace";
-import fillOrReplaceServer from "./utils/server/fillOrReplace";
-import type { ReplaceDetail } from "../types/global";
+import fillOrReplaceClient from "./environments/client/fillOrReplace";
+import fillOrReplaceServer from "./environments/server/fillOrReplace";
+import type { ReplaceDetail } from "./types/global";
 
 const replace = (
-    svg: Element | string,
+    svg: SVGElement | Element | string,
     detailsArray: ReplaceDetail[],
     callback?: Function): string|void => {
 

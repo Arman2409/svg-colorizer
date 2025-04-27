@@ -1,8 +1,8 @@
-import fillOrReplaceClient from './utils/client/fillOrReplace';
-import fillSVGServer from './utils/server/fillOrReplace';
+import fillOrReplaceClient from './environments/client/fillOrReplace';
+import fillSVGServer from './environments/server/fillOrReplace';
 
 const fill = (
-    elementStringOrElement?: Element | string,
+    elementStringOrElement?: SVGElement | Element | string,
     color?: string,
     ignoreColors?: string[],
     callback?: Function) => {  

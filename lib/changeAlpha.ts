@@ -1,15 +1,19 @@
-import modifyColor from "../helpers/modifyColor";
-import getColors from "./getColors";
+import modifyColor from "./helpers/modifyColor";
+import getColors from "./environments/server/getColors";
 import replace from "./replace";
 
 const changeAlpha = (
-    svg: Element | string,
+    svg: SVGElement | Element | string,
     factor: number): string | void => {
     // Check if DOM API is available  
     const isClient = document !== undefined;
 
     if (!svg || typeof factor !== "number") {
         throw new Error(`SVG ${isClient ? "HTML Element" : "string"} and brightness factor should be provided`);
+    }
+
+    if (svg instanceof SVGElement || svg instanceof Element) {
+        svg = svg.outerHTML;
     }
 
     const colors = getColors(svg, false, true) as string[];
@@ -23,7 +27,7 @@ const changeAlpha = (
             replace: newColor,
         }
     })
-    return replace(svg, replaceDetails);    
+    return replace(svg, replaceDetails);
 }
 
 export default changeAlpha;

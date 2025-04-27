@@ -1,4 +1,4 @@
-import { ReplaceDetail } from "../../../types/global";
+import { ReplaceDetail } from "../../types/global";
 import getColors from "./getColors";
 
 const fillOrReplace = (

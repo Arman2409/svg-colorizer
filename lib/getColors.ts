@@ -1,13 +1,15 @@
-import getColorsOfSVG from './utils/client/getColors';
-import getColorsOfSVGServer from './utils/server/getColors';
+import getColorsOfSVG from './environments/client/getColors';
+import getColorsOfSVGServer from './environments/server/getColors';
+import type { SvgColors } from './types/global';
 
 const getColors = (
-    element: Element | string,
+    element: SVGElement | Element | string,
     onlyParent?: boolean,
-    asArray?: boolean) => {
+    asArray?: boolean):SvgColors | string[] => {
+
     // Check whether this is client or server environment
     if (typeof document !== 'undefined') {
-        return getColorsOfSVG(element as Element, onlyParent, asArray);
+        return getColorsOfSVG(element as SVGElement, onlyParent, asArray);
     } else {
         return getColorsOfSVGServer(element as string, onlyParent, asArray);
     }
