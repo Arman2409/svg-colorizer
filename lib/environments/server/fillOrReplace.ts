@@ -4,7 +4,7 @@ import getColors from "./getColors";
 const fillOrReplace = (
     elementString: string,
     operation: "fill" | "replace",
-    color?: string,
+    color: string,
     ignoreColors?: string[],
     replaceDetails?: ReplaceDetail[],
     callback?: Function

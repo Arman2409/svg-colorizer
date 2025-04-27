@@ -1,4 +1,7 @@
-const getStyleValueFromLine = (styleAttribute: string, property: string) => {
+const getStyleValueFromLine = (
+    styleAttribute: string,
+    property: string
+): string | null => {
     const fillIndex = styleAttribute.indexOf(`${property}:`);
 
     // Check if property exists
@@ -6,7 +9,7 @@ const getStyleValueFromLine = (styleAttribute: string, property: string) => {
         // Color ending characters 
         const characters = [';', "'", '"'];
         const indexes = [];
-        
+
         // Check for each character 
         for (let i = 0; i < characters.length; i++) {
             const index = styleAttribute.indexOf(characters[i], fillIndex + 5);

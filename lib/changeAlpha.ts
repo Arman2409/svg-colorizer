@@ -4,7 +4,8 @@ import replace from "./replace";
 
 const changeAlpha = (
     svg: SVGElement | Element | string,
-    factor: number): string | void => {
+    factor: number
+): string | void => {
     // Check if DOM API is available  
     const isClient = document !== undefined;
 

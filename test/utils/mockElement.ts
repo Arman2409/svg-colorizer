@@ -7,9 +7,11 @@ const mockElement = (
     const domParser = new DOMParser();
     const DOM = domParser.parseFromString(`<html><${name}></${name}></html>`, "text/html");
     const element = DOM.querySelector(`${name}`) as Element;
+
     for (const attribute in attributes) {
         element?.setAttribute(attribute, attributes[attribute]);
     }
+    
     if (toString) {
         return element?.outerHTML;
     }

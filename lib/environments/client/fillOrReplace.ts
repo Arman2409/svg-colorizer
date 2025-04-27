@@ -7,10 +7,11 @@ import type { ReplaceDetail, SvgColors } from "../../types/global";
 const fillOrReplace = (
     svg: Element,
     operation: "fill" | "replace",
-    color?: string,
+    color: string,
     ignoreColors?: string[],
     replaceDetails?: ReplaceDetail[],
     callback?: Function): void => {
+        
     if (!svg) {
         throw new Error("SVG element must be provided");
     }
