@@ -1,6 +1,7 @@
-# `SVG colorizer`
+# SVG colorizer
 
-Fill entire SVGs with a single color or replace specific colors within them.
+Dynamically style your SVGs with ease using this versatile utility set. Effortlessly apply a uniform color across an entire SVG or precisely swap out specific colors within its elements. Designed for seamless integration in both browser environments (where they directly manipulate the SVG DOM) and server-side contexts (returning the modified SVG string for your processing needs). These functions detect their execution environments. Beyond color manipulation, this library offers other useful utility functions to streamline your SVG workflows.
+
 
 ## Getting started
 
@@ -13,114 +14,199 @@ npm install svg-colorizer
 2. Import functions in JavaScript/TypeScript file and use them
 
 ```javascript
-import { fill } from "svg-colorizer";
-
-fill(document.querySelector("svg"), "red");
+import { fill, replace, changeBrightness, extractColors, generateRandomColor } from "svg-colorizer";
 ```
 
-## Examples of usage
 
+## Examples
+
+### Using in the client side
 ```javascript
-import { fill } from "svg-colorizer";
+import { fill, replace, generateRandomColor, changeBrightness } from "svg-colorizer";
 
-fill(document.querySelector("svg"), "red");
+const svgDOMElement = document.querySelector("svg");
+
+// Generate random colors
+const randomColor1 = generateRandomColor();
+const randomColor2 = generateRandomColor();
+
+// Fill the entire SVG with one color
+fill(svgDOMElement, randomColor1);
+
+// Replace specified colors with other colors
+replace(svgDOMElement, [
+    {
+        target: randomColor1,
+        replace: randomColor2
+    }
+])
+
+// Change brightness
+changeBrightness(svgElement, 50);
+
 ```
 
+### Using in the server side
 ```javascript
-import { fill } from "svg-colorizer";
+import { fill, replace, generateRandomColor, changeBrightness } from "svg-colorizer";
 
-const svgWithNewColor = fill(svgString, "red");
+const svgStringElement = "<svg viewBox="0 0 10 10" fill="currentColor"><rect width="10" height="10"/></svg>"
+
+// Generate random colors
+const randomColor1 = generateRandomColor();
+const randomColor2 = generateRandomColor();
+
+// Fill the entire SVG with one color
+const filledString = fill(svgDOMElement, randomColor1);
+
+// Replace specified colors with other colors
+const replacedString = replace(filledString, [
+    {
+        target: randomColor1,
+        replace: randomColor2
+    }
+])
+
+// Change brightness
+const changedBrightnessString =  changeBrightness(replacedString, 50);
+
 ```
 
-```javascript
-import { getRandomColor } from "svg-colorizer"
-
-const newColor = getRandomColor();
-```
 
 ## Available functions
- ` This functions will use either DOM API or string manipulation for achieving their goal, depending whether they are used in client side or server side.`
+The functions will use either DOM API or string manipulation for achieving their goal, depending whether they are used in client side or server side.
+
+
+#### Color modifier functions
 
 - [fill](#fill)
-- [getColors](#getColors)
 - [replace](#replace)
+- [invert](#invert)
+
+#### Property modifier functions
+
 - [changeBrightness](#changeBrightness)
 - [changeAlpha](#changeAlpha)
-- [getRandomColor](#getRandomColor)
+- [changeBrightness](#changeBrightness)
+- [changeAlpha](#changeAlpha)
+
+#### Extractor functions
+
+- [extractColors](#extractColors)
+
+#### Generator functions
+
+- [generateRandomColor](#getRandomColor)
 
 
-#### <span id="fill"> fill(svg, color, [ignoreColors], [callback]) </span>
-
-This function fills the specified SVG element with a given color.
-
-**Arguments:**
-
-* `svg`: SVG Element which should be HTML element in DOM available environment and string otherwise.
-* `color`: A string representing the desired fill color.
-* `ignoreColors` (optional): An array of color strings to exclude from replacement.
-* `callback` (optional): A function that executes after the fill operation is complete.
+### Color modifier functions
 
 
-#### <span id="replace"> replace(svg, detailsArray, [callback]) </span>
+#### <b id="fill">  </b>
 
-This function replaces specific colors within the SVG element based on a configuration.
+```typescript
+  (svg: SVGElement | string, 
+   color: string,
+   ignoreColors?: string[], 
+   callback?: () => void
+  ) => void | string
+```
 
-**Arguments:**
-
-* `svg`: SVG Element which should be HTML element in DOM available environment and string otherwise.
-* `detailsArray`: An array of objects with the following properties:
-    * `target`: A string representing the color you want to replace within the SVG.
-    * `replace`: A string representing the new color to use as a replacement.
-* `callback` (optional): A function that executes after the replace operation is complete.
-
-
-#### <span id="getColors"> getColors(svg, [onlyParent]) </span>
-
-This function extracts the colors used in the SVG element and returns them as an object.
-
-**Arguments:**
-
-* `svg`: SVG Element which should be HTML element in DOM available environment and string otherwise.
-* `onlyParent` (optional): A boolean flag indicating whether to extract colors only from the parent element (true) or include its children (false, default).
-
-**Returns:**
-
-An object with keys:
-
-* `fill`: An array containing all fill color strings used in the SVG.
-* `stroke`: An array containing all stroke color strings used in the SVG (if applicable).
-* `stop`: An array containing all stop color strings used in the SVG for gradients (if applicable).
+Fills the specified SVG element with a given color. Returns string in server side and nothing in client side.
 
 
-#### <span id="changeBrightness">changeBrightness(svg, factor)</span>
+#### <b id="replace"> replace </b>
 
-This function changes the brightness of SVG element by replacing all colors in it.
+```typescript
+  (svg: SVGElement | string, 
+   detailsArray: { target: string, replace: string }[], 
+   callback?: () => void
+  ) => void | string
+```
 
-**Arguments:**
+Replaces specific colors within the SVG element based on a configuration. Returns string in server side and nothing in client side.
 
-* `svg`: SVG Element which should be HTML element in DOM available environment and string otherwise.
-* `factor`: the amount of brightness change from -255 to 255, the bigger the factor, the brighter the image.
+#### <b id="invert"> invert </b>
 
+```typescript
+  (svg: SVGElement | string,  
+   callback?: () => void
+  ) => void | string
+```
 
-#### <span id="changeAlpha">changeAlpha(svg, amount)</span>
-
-This function changes the alpha of SVG element by replacing all colors in it.
-
-**Arguments:**
-
-* `svg`: SVG Element which should be HTML element in DOM available environment and string otherwise.
-* `factor`: the amount of brightness change from -1 to 1, the bigger the factor, the higher the alpha.
+Replaces all the colors with their opposite in the color spectre. Returns string in server side and nothing in client side.
 
 
-#### <span id="getRandomColor">getRandomColor([format])</span>
+### Property modifier functions
 
-This function generates a random color and returns it in either hexadecimal notation or RGB format.
 
-**Arguments:**
+#### <b id="changeBrightness">changeBrightness</b>
 
-* `format` (optional): A string specifying the desired format, either "hex" (default) or "rgb".
+```typescript
+  (svg: SVGElement | string, 
+   factor: number
+  ) => void | string
+```
 
-**Returns:**
+Changes the brightness of SVG element by replacing all colors in it.Returns string in server side and nothing in client side.
 
-A string representing the randomly generated color in the specified format (hexadecimal or RGB).
+#### <b id="changeAlpha">changeAlpha</b>
 
+```typescript
+  (svg: SVGElement | string, 
+   factor: number
+  ) => void | string
+```
+
+Changes the alpha(opacity) of SVG element by replacing all colors in it.Returns string in server side and nothing in client side.
+
+#### <b id="changeHue">changeHue</b>
+
+```typescript
+  (svg: SVGElement | string, 
+   factor: number
+  ) => void | string
+```
+
+Changes the hue of the the SVG element.Returns string in server side and nothing in client side.
+
+#### <b id="changeSaturation">changeSaturation</b>
+
+```typescript
+  (svg: SVGElement | string, 
+   factor: number
+  ) => void | string
+```
+
+Changes the saturation of SVG element by replacing all colors in it.Returns string in server side and nothing in client side.
+
+
+### Extractor functions
+
+
+#### <b id="extractColors"> extractColors </b>
+
+```typescript
+  (svg: SVGElement | string, 
+   onlyParent?: boolean,
+   asArray?: boolean
+  ) => { 
+    fill: string[], 
+    stroke: string[],
+    stop: string[]
+  } | string[]
+```
+
+Extracts the colors used in the SVG element. Returns them as an object or an array depending the asArray option.
+
+
+### Generator functions
+
+
+#### <b id="generateRandomColor">generateRandomColor</b>
+
+```typescript
+(format?: "hex" | "rgb") => string
+```
+
+This function generates a random color and returns it in either hexadecimal notation or RGB format depending on the format argument(default is "rgb").

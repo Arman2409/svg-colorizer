@@ -5,6 +5,7 @@ import type { ReplaceDetail, SvgColors } from "../../types/global";
 
 const invert = (
     elementStringOrElement: SVGElement | Element | string,
+    callback?: Function
 ) => {
     let allColors = extractColors(elementStringOrElement, false, true);
 
@@ -24,7 +25,7 @@ const invert = (
         }
     ));
 
-    return replace(elementStringOrElement, replaceDetails);
+    return replace(elementStringOrElement, replaceDetails, callback);
 }
 
 export default invert;
