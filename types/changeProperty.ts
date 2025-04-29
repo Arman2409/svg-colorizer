@@ -1,0 +1,1 @@
+export type ColorProperty = "brightness" | "alpha" | "saturation" | "hue";
