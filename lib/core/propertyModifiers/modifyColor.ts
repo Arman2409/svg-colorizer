@@ -1,6 +1,6 @@
 import tinycolor from "tinycolor2";
 
-import type { ColorProperty } from "../../../types/changeProperty";
+import type { ColorProperty } from "../../types/changeProperty";
 
 const modifyColor = (
     colorString: string,

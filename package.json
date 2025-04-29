@@ -5,7 +5,6 @@
   "scripts": {
     "build": "npx tsup --config tsup.config.js",
     "build:watch": "npx tsup --config tsup.config.js --watch",
-    "release": "npm run build && rm -rf ./test",
     "test": "npx jest"
   },
   "keywords": [

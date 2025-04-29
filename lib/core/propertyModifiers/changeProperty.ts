@@ -1,7 +1,7 @@
 import modifyColor from "./modifyColor";
 import getColors from "../extractors/extractColors";
 import replace from "../colorModifiers/replace";
-import type { ColorProperty } from "../../../types/changeProperty";
+import type { ColorProperty } from "../../types/changeProperty";
 
 const changeProperty = (
     svg: SVGElement | Element | string,

@@ -9,6 +9,7 @@ bun.lock
 # Core files 
 lib
 test
+types
 index.ts 
 
 # Configs 
@@ -16,3 +17,6 @@ jest.config.js
 tsconfog.json
 structure.sh
 tsup.config
+
+# Dev folders
+dev-test
