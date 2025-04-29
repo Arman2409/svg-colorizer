@@ -42,7 +42,7 @@ replace(svgDOMElement, [
 ])
 
 // Change brightness
-changeBrightness(svgElement, 50);
+changeBrightness(svgDOMElement, 50);
 
 ```
 

@@ -14,9 +14,9 @@ index.ts
 
 # Configs 
 jest.config.js 
-tsconfog.json
+tsconfig.json
 structure.sh
-tsup.config
+tsup.config.js
 
 # Dev folders
 dev-test
