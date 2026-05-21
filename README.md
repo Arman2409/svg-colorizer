@@ -57,7 +57,7 @@ const randomColor1 = generateRandomColor();
 const randomColor2 = generateRandomColor();
 
 // Fill the entire SVG with one color
-const filledString = fill(svgDOMElement, randomColor1);
+const filledString = fill(svgStringElement, randomColor1);
 
 // Replace specified colors with other colors
 const replacedString = replace(filledString, [
@@ -87,8 +87,8 @@ The functions will use either DOM API or string manipulation for achieving their
 
 - [changeBrightness](#changeBrightness)
 - [changeAlpha](#changeAlpha)
-- [changeBrightness](#changeBrightness)
-- [changeAlpha](#changeAlpha)
+- [changeHue](#changeHue)
+- [changeSaturation](#changeSaturation)
 
 #### Extractor functions
 
@@ -102,7 +102,7 @@ The functions will use either DOM API or string manipulation for achieving their
 ### Color modifier functions
 
 
-#### <b id="fill">  </b>
+#### <b id="fill">fill</b>
 
 ```typescript
   (svg: SVGElement | string, 
@@ -209,4 +209,4 @@ Extracts the colors used in the SVG element. Returns them as an object or an arr
 (format?: "hex" | "rgb") => string
 ```
 
-This function generates a random color and returns it in either hexadecimal notation or RGB format depending on the format argument(default is "rgb").
+This function generates a random color and returns it in either hexadecimal notation or RGB format depending on the format argument(default is "hex").
