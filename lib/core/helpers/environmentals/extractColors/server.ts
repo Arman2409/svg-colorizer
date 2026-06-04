@@ -16,28 +16,27 @@ const extractColors = (
     stop: new Set<string>(),
   };
 
-  // Regex patterns for color values
-  const fillPattern = /fill:(#[a-f0-9]{3,6})|(rgb\(\d+,\s*\d+,\s*\d+\))/gi;
-  const strokePattern = /stroke:(#[a-f0-9]{3,6})|(rgb\(\d+,\s*\d+,\s*\d+\))/gi;
-  const stopPattern = /stop-color:(#[a-f0-9]{3,6})|(rgb\(\d+,\s*\d+,\s*\d+\))/gi;
-
   if (onlyParent) {
     const firstTagPattern = /^<([^\s/>]+)(?:\s+[^>]*?)?>/;
     const match = elementString.match(firstTagPattern) as string[];
     elementString = match[0];
   }
 
-  // Extract colors from style attributes
+  // Extract colors from style attributes — split declarations to support all color formats
   const styleMatches = elementString.match(/style="([^"]+)"/gi);
   if (styleMatches) {
     styleMatches.forEach(match => {
-      const styles = match.slice(7, -1); // Extract styles without quotes
-      const fillColors = styles.match(fillPattern);
-      const strokeColors = styles.match(strokePattern);
-      const stops = styles.match(stopPattern);
-      if (fillColors) fillColors.forEach(color => colors.fill.add(color.slice(5)));
-      if (strokeColors) strokeColors.forEach(color => colors.stroke.add(color.slice(7)));
-      if (stops) stops.forEach(color => colors.stop.add(color.slice(7)));
+      const styles = match.slice(7, -1);
+      styles.split(';').forEach(decl => {
+        const colonIdx = decl.indexOf(':');
+        if (colonIdx === -1) return;
+        const prop = decl.slice(0, colonIdx).trim();
+        const value = decl.slice(colonIdx + 1).trim();
+        if (!value) return;
+        if (prop === 'fill') colors.fill.add(value);
+        else if (prop === 'stroke') colors.stroke.add(value);
+        else if (prop === 'stop-color') colors.stop.add(value);
+      });
     });
   }
 
@@ -45,7 +44,7 @@ const extractColors = (
   const fillMatch = elementString.match(/fill="([^"]+)"/gi);
   const strokeMatch = elementString.match(/stroke="([^"]+)"/gi);
   const stopMatch = elementString.match(/stop-color="([^"]+)"/gi);
-  
+
   if (fillMatch) fillMatch.forEach(match => colors.fill.add(match.slice(6, -1)));
   if (strokeMatch) strokeMatch.forEach(match => colors.stroke.add(match.slice(8, -1)));
   if (stopMatch) stopMatch.forEach(match => colors.stop.add(match.slice(13, -1)));

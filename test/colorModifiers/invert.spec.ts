@@ -14,10 +14,23 @@ jest.spyOn(initialSVG, 'querySelectorAll').mockReturnValue([initialSVG] as unkno
 describe("invertAll", () => {
     test("all colors should be inverted", () => {
         invert(initialSVG);
-        
+
         const colors = extractColors(initialSVG);
 
         expect(colors?.fill).toStrictEqual([INVERTED_COLOR]);
     });
+});
 
-})
+describe("invertAll - server", () => {
+    test("all colors should be inverted in SVG string", () => {
+        Object.defineProperty(global, 'document', {
+            value: undefined,
+            writable: true,
+        });
+
+        const svgString = `<svg fill="${FILL_COLOR}"></svg>`;
+        const result = invert(svgString) as string;
+
+        expect(result.toLowerCase()).toContain(INVERTED_COLOR);
+    });
+});

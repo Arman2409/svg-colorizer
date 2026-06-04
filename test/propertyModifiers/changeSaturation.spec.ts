@@ -16,13 +16,8 @@ jest.spyOn(HtmlSVG, 'querySelectorAll').mockReturnValue([HtmlSVG] as unknown as 
 
 describe("changeSaturation", () => {
     test('changes saturation for client-side HTML SVG', () => {
-        console.log(extractColors(HtmlSVG));
-        
         changeSaturation(HtmlSVG, SATURATION_CHANGE);
         const colors = extractColors(HtmlSVG);
-
-        console.log(colors);
-        
         const changedColor = (colors?.fill as string[])[0];
         
         expect("#" + tinycolor(changedColor).toHex()).toEqual(SATURATION_CHANGED_COLOR);

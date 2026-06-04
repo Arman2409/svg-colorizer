@@ -2,33 +2,17 @@ const getStyleValueFromLine = (
     styleAttribute: string,
     property: string
 ): string | null => {
-    const fillIndex = styleAttribute.indexOf(`${property}:`);
+    const propIndex = styleAttribute.indexOf(`${property}:`);
+    if (propIndex === -1) return null;
 
-    // Check if property exists
-    if (fillIndex !== -1) {
-        // Color ending characters 
-        const characters = [';', "'", '"'];
-        const indexes = [];
+    const valueStart = propIndex + property.length + 1;
+    const terminators = [';', "'", '"'];
+    const indexes = terminators
+        .map(c => styleAttribute.indexOf(c, valueStart))
+        .filter(i => i !== -1);
 
-        // Check for each character 
-        for (let i = 0; i < characters.length; i++) {
-            const index = styleAttribute.indexOf(characters[i], fillIndex + 5);
-            if (index === -1) continue;
-            indexes.push(index);
-        }
-        const endIndex = Math.min(
-            ...indexes
-        );
-
-        // Check if any terminator exists after the property
-        if (endIndex !== -1) {
-            const colorValue = styleAttribute.slice(fillIndex + 5, endIndex).trim();
-            return colorValue;
-        }
-    }
-
-    // Return null if no color is found
-    return null;
+    const endIndex = indexes.length > 0 ? Math.min(...indexes) : styleAttribute.length;
+    return styleAttribute.slice(valueStart, endIndex).trim() || null;
 }
 
 export default getStyleValueFromLine;
