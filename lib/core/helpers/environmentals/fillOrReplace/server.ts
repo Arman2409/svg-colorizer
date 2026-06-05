@@ -7,7 +7,7 @@ const fillOrReplace = (
     color: string,
     ignoreColors?: string[],
     replaceDetails?: ReplaceDetail[],
-    callback?: Function
+    callback?: () => void
 ): string => {
     if (typeof elementString !== "string") {
         throw new Error("SVG string must be provided");

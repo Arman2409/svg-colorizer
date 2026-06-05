@@ -5,7 +5,7 @@ const fill = (
     elementStringOrElement: SVGElement | Element | string,
     color: string,
     ignoreColors?: string[],
-    callback?: Function
+    callback?: () => void
 ):string | void => {  
 
     // Check whether this is client or server environment

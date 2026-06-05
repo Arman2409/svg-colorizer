@@ -38,7 +38,7 @@ const modifyColor = (
 
     if (property === "brightness") {
         // Add factor to each RGB property
-        for (let x in colorValues) {
+        for (const x in colorValues) {
             const colorValue = colorValues[x as keyof typeof colorValues] + factor;
             // Clamp RGB values between 0 and 255
             const valueInRange = Math.max(0, Math.min(255, colorValue));

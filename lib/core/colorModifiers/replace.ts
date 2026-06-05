@@ -5,7 +5,7 @@ import type { ReplaceDetail } from "../../types/global";
 const replace = (
     svg: SVGElement | Element | string,
     detailsArray: ReplaceDetail[],
-    callback?: Function
+    callback?: () => void
 ): string|void => {
 
     // Check whether this is client or server environment

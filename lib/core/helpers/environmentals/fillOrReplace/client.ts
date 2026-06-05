@@ -10,7 +10,7 @@ const fillOrReplace = (
     color: string,
     ignoreColors?: string[],
     replaceDetails?: ReplaceDetail[],
-    callback?: Function): void => {
+    callback?: () => void): void => {
         
     if (!svg) {
         throw new Error("SVG element must be provided");
@@ -44,7 +44,7 @@ const fillOrReplace = (
             if (styleAttribute) {
                 Object.keys(elemColors).forEach((colorType: string) => {
                     if (styleAttribute.includes(colorType)) {
-                        let currentColor = getStyleValueFromLine(styleAttribute, colorType);
+                        const currentColor = getStyleValueFromLine(styleAttribute, colorType);
 
                         if (operation === "replace") {
                             // Find the replace details for the given color 
@@ -73,7 +73,7 @@ const fillOrReplace = (
                         continue;
                     }
                 }
-                color && element.setAttribute(colorKey, color);
+                if (color) element.setAttribute(colorKey, color);
             }
         }
     };
