@@ -1,6 +1,7 @@
 import extractColors from "../../lib/core/extractors/extractColors";
 import replace from "../../lib/core/colorModifiers/replace";
 import mockElement from "../utils/mockElement";
+import type { SvgColors } from "../../lib/types/global";
 
 const MAIN_FILL_COLOR = "red";
 const REPLACE_COLOR = "green";
@@ -21,6 +22,14 @@ describe("replace", () => {
         expect(colors?.fill).toStrictEqual([REPLACE_COLOR]);
     });
 
+    test('invokes callback after replacing', () => {
+        const cb = jest.fn();
+        const svgEl = mockElement("svg", false, { fill: "orange" }) as Element;
+        jest.spyOn(svgEl, 'querySelectorAll').mockReturnValue([svgEl] as unknown as NodeListOf<Element>);
+        replace(svgEl, [{ target: "orange", replace: "purple" }], cb);
+        expect(cb).toHaveBeenCalledTimes(1);
+    });
+
     test('replaces colors in server-side string SVG element', () => {
         // Make document undefined 
         Object.defineProperty(global, 'document', {
@@ -30,5 +39,23 @@ describe("replace", () => {
         const colors = extractColors(replacedSVGString as string);
 
         expect(colors?.fill).toStrictEqual([REPLACE_COLOR]);
+    });
+
+    test('leaves color unchanged when no replace detail matches', () => {
+        const svgStr = mockElement("svg", true, { fill: "orange" }) as string;
+        const result = replace(svgStr, [{ target: "blue", replace: "red" }]) as string;
+        const colors = extractColors(result);
+        expect(colors?.fill).toStrictEqual(["orange"]);
+    });
+
+    test('replaces multiple colors in a single call', () => {
+        const svgStr = `<svg><rect fill="red"/><circle stroke="blue"/></svg>`;
+        const result = replace(svgStr, [
+            { target: "red", replace: "yellow" },
+            { target: "blue", replace: "green" },
+        ]) as string;
+        const colors = extractColors(result) as SvgColors;
+        expect(colors?.fill).toStrictEqual(["yellow"]);
+        expect(colors?.stroke).toStrictEqual(["green"]);
     });
 })

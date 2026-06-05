@@ -33,4 +33,11 @@ describe("invertAll - server", () => {
 
         expect(result.toLowerCase()).toContain(INVERTED_COLOR);
     });
+
+    test('inverts multiple colors in the same SVG string', () => {
+        const svgStr = `<svg fill="#FF0000" stroke="#0000FF"></svg>`;
+        const result = invert(svgStr) as string;
+        expect(result.toLowerCase()).toContain('#00ffff'); // inverted red
+        expect(result.toLowerCase()).toContain('#ffff00'); // inverted blue
+    });
 });

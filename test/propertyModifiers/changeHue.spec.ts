@@ -37,4 +37,14 @@ describe("changeAlpha", () => {
         expect("#" + tinycolor(changedColor).toHex()).toEqual(HUE_CHANGED_COLOR);
     });
 
+    test('wraps hue correctly when change exceeds 360 degrees', () => {
+        const svgStr = `<svg fill="${INITIAL_COLOR}"></svg>`;
+        const result = changeHue(svgStr, 360);
+        const colors = extractColors(result as string);
+        const changedColor = (colors?.fill as string[])[0];
+        const originalHue = tinycolor(INITIAL_COLOR).toHsl().h;
+        const newHue = tinycolor(changedColor).toHsl().h;
+        expect(newHue).toBeCloseTo(originalHue, 0);
+    });
+
 })

@@ -34,4 +34,11 @@ describe("changeBrightness", () => {
         expect(colors?.fill).toStrictEqual([expectedColor]);
     });
 
+    test('clamps RGB channel values at 255', () => {
+        const svgStr = mockElement("svg", true, { fill: "rgb(200, 0, 0)" }) as string;
+        const result = changeBrightness(svgStr, 200);
+        const colors = extractColors(result as string);
+        expect(colors?.fill).toStrictEqual(["rgb(255, 200, 200)"]);
+    });
+
 })

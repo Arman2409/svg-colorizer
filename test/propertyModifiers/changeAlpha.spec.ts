@@ -35,4 +35,20 @@ describe("changeAlpha", () => {
         expect(tinycolor(changedColor).getAlpha()).toEqual(1 + alphaChange);
     });
 
+    test('clamps alpha to 1.0 when factor would exceed the upper bound', () => {
+        const svgStr = `<svg fill="rgb(255, 0, 0)"></svg>`;
+        const result = changeAlpha(svgStr, 0.5);
+        const colors = extractColors(result as string);
+        const changedColor = (colors?.fill as string[])[0];
+        expect(tinycolor(changedColor).getAlpha()).toEqual(1);
+    });
+
+    test('clamps alpha to 0 when factor drops below the lower bound', () => {
+        const svgStr = `<svg fill="rgba(255, 0, 0, 0.2)"></svg>`;
+        const result = changeAlpha(svgStr, -0.5);
+        const colors = extractColors(result as string);
+        const changedColor = (colors?.fill as string[])[0];
+        expect(tinycolor(changedColor).getAlpha()).toEqual(0);
+    });
+
 })

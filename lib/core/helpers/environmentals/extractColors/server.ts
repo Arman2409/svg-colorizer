@@ -47,7 +47,7 @@ const extractColors = (
 
   if (fillMatch) fillMatch.forEach(match => colors.fill.add(match.slice(6, -1)));
   if (strokeMatch) strokeMatch.forEach(match => colors.stroke.add(match.slice(8, -1)));
-  if (stopMatch) stopMatch.forEach(match => colors.stop.add(match.slice(13, -1)));
+  if (stopMatch) stopMatch.forEach(match => colors.stop.add(match.slice(12, -1)));
 
 
   // Convert sets to arrays
