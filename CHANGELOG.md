@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.2] - 2026-06-05
+## [0.4.0] - 2026-06-05
+
+### Breaking Changes
+- `callback` parameter type narrowed from `Function` to `() => void` in `fill`, `replace`, and `invert` — callbacks that accepted arguments or returned a value must be updated
+- `stop-color` server-side extraction now returns the correct value — previously the first character was silently dropped (e.g. `"teal"` → `"eal"`)
 
 ### Fixed
 - Fixed `stop-color` server-side parser stripping the first character of every value (off-by-one slice)
@@ -18,9 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `files` field in `package.json` for explicit publish whitelist
 - Release scripts: `release:patch`, `release:minor`, `release:major`
 - `CHANGELOG.md`
-
-### Changed
-- `callback` parameter type narrowed from `Function` to `() => void` across all functions
 
 ## [0.3.1] - 2025-04-29
 
@@ -71,8 +72,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `getColors` function (client and server)
 - Jest test suite with jsdom environment
 
-[Unreleased]: https://github.com/Arman2409/svg-colorizer/compare/v0.3.2...HEAD
-[0.3.2]: https://github.com/Arman2409/svg-colorizer/compare/v0.3.1...v0.3.2
+[Unreleased]: https://github.com/Arman2409/svg-colorizer/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/Arman2409/svg-colorizer/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/Arman2409/svg-colorizer/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/Arman2409/svg-colorizer/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/Arman2409/svg-colorizer/compare/v0.2.0...v0.2.1

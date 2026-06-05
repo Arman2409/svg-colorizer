@@ -1,5 +1,12 @@
 # SVG colorizer
 
+> **⚠️ Breaking change in v0.4.0**
+>
+> The `callback` parameter type has been narrowed from `Function` to `() => void` in `fill`, `replace`, and `invert`.
+> If you were passing a callback that accepted arguments or returned a value, update it to a no-argument, no-return function.
+>
+> The `stop-color` server-side parser was also fixed — it previously silently dropped the first character of every `stop-color` value. If you relied on the broken output, your results will change.
+
 Dynamically style your SVGs with ease using this versatile utility set. Effortlessly apply a uniform color across an entire SVG or precisely swap out specific colors within its elements. Designed for seamless integration in both browser environments (where they directly manipulate the SVG DOM) and server-side contexts (returning the modified SVG string for your processing needs). These functions detect their execution environments. Beyond color manipulation, this library offers other useful utility functions to streamline your SVG workflows.
 
 
