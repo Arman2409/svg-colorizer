@@ -36,8 +36,8 @@ const fillOrReplace = (
                 return;
             }
         }
-        // Replace all matches in the string 
-        elementString = elementString.replace(colorItem, color as string);
+        // Replace all matches in the string
+        elementString = elementString.replaceAll(colorItem, color as string);
     })
 
     if (typeof callback === "function") callback()

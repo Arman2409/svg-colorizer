@@ -57,7 +57,7 @@ changeBrightness(svgDOMElement, 50);
 ```javascript
 import { fill, replace, generateRandomColor, changeBrightness } from "svg-colorizer";
 
-const svgStringElement = "<svg viewBox="0 0 10 10" fill="currentColor"><rect width="10" height="10"/></svg>"
+const svgStringElement = `<svg viewBox="0 0 10 10" fill="currentColor"><rect width="10" height="10"/></svg>`
 
 // Generate random colors
 const randomColor1 = generateRandomColor();
@@ -103,7 +103,7 @@ The functions will use either DOM API or string manipulation for achieving their
 
 #### Generator functions
 
-- [generateRandomColor](#getRandomColor)
+- [generateRandomColor](#generateRandomColor)
 
 
 ### Color modifier functions
@@ -155,7 +155,9 @@ Replaces all the colors with their opposite in the color spectre. Returns string
   ) => void | string
 ```
 
-Changes the brightness of SVG element by replacing all colors in it.Returns string in server side and nothing in client side.
+Changes the brightness of SVG element by replacing all colors in it. Returns string in server side and nothing in client side.
+
+`factor` is added to each RGB channel (0–255). Use positive values to brighten and negative values to darken (e.g. `50` to brighten, `-50` to darken). Values are clamped to `[0, 255]`.
 
 #### <b id="changeAlpha">changeAlpha</b>
 
@@ -165,7 +167,9 @@ Changes the brightness of SVG element by replacing all colors in it.Returns stri
   ) => void | string
 ```
 
-Changes the alpha(opacity) of SVG element by replacing all colors in it.Returns string in server side and nothing in client side.
+Changes the alpha (opacity) of SVG element by replacing all colors in it. Returns string in server side and nothing in client side.
+
+`factor` is added to the current alpha value (`0.0`–`1.0`). Use positive values to increase opacity and negative values to decrease it (e.g. `0.2` or `-0.2`). Values are clamped to `[0, 1]`.
 
 #### <b id="changeHue">changeHue</b>
 
@@ -175,7 +179,9 @@ Changes the alpha(opacity) of SVG element by replacing all colors in it.Returns 
   ) => void | string
 ```
 
-Changes the hue of the the SVG element.Returns string in server side and nothing in client side.
+Changes the hue of the SVG element. Returns string in server side and nothing in client side.
+
+`factor` is the degrees to rotate the hue on the color wheel (`0`–`360`). Negative values rotate in the opposite direction. The result wraps around (e.g. `30` or `-30`).
 
 #### <b id="changeSaturation">changeSaturation</b>
 
@@ -185,7 +191,9 @@ Changes the hue of the the SVG element.Returns string in server side and nothing
   ) => void | string
 ```
 
-Changes the saturation of SVG element by replacing all colors in it.Returns string in server side and nothing in client side.
+Changes the saturation of SVG element by replacing all colors in it. Returns string in server side and nothing in client side.
+
+`factor` is added to the current saturation value (`0.0`–`1.0`). Use positive values to increase saturation and negative values to decrease it (e.g. `0.2` or `-0.2`). Values are clamped to `[0, 1]`.
 
 
 ### Extractor functions

@@ -58,4 +58,13 @@ describe("replace", () => {
         expect(colors?.fill).toStrictEqual(["yellow"]);
         expect(colors?.stroke).toStrictEqual(["green"]);
     });
+
+    test('replaces all occurrences of a color in server-side string (not just the first)', () => {
+        // SVG with the same color repeated in multiple elements
+        const svgStr = `<svg><rect fill="red"/><circle fill="red"/><path fill="red"/></svg>`;
+        const result = replace(svgStr, [{ target: "red", replace: "blue" }]) as string;
+        // All three fill="red" occurrences should be replaced
+        expect(result.includes('fill="red"')).toBe(false);
+        expect(result.split('fill="blue"').length - 1).toBe(3);
+    });
 })
