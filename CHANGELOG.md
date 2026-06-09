@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-06-09
+
+### Fixed
+- Server-side color replacement now replaces all occurrences of a color (was using `.replace` — first occurrence only — instead of `.replaceAll`)
+- README server-side example had an invalid JS string due to unescaped double quotes inside the SVG literal
+
+### Changed
+- `tinycolor2` moved from `devDependencies` to `dependencies` — it is a runtime dependency and must be installed by consumers
+- `exports` map corrected to the TypeScript-recommended dual CJS/ESM format with `types` nested inside each condition
+- Added root-level `types` and `module` fields for older toolchain compatibility
+- `main` corrected to point to the CJS build (`index.cjs`)
+- Keywords expanded to improve npm discoverability
+
+### Docs
+- Fixed broken `#generateRandomColor` navigation anchor (was `#getRandomColor`)
+- Added valid range information for the `factor` parameter in `changeBrightness`, `changeAlpha`, `changeHue`, and `changeSaturation`
+
 ## [0.4.0] - 2026-06-05
 
 ### Breaking Changes
@@ -72,7 +89,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `getColors` function (client and server)
 - Jest test suite with jsdom environment
 
-[Unreleased]: https://github.com/Arman2409/svg-colorizer/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/Arman2409/svg-colorizer/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/Arman2409/svg-colorizer/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/Arman2409/svg-colorizer/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/Arman2409/svg-colorizer/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/Arman2409/svg-colorizer/compare/v0.2.1...v0.3.0

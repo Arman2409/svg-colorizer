@@ -1,6 +1,9 @@
 # Build
 /dist
 
+# Local notes
+.claude/
+
 # node modules 
 /node_modules
 
