@@ -1,5 +1,7 @@
 # SVG colorizer
 
+**[Live demo →](https://arman2409.github.io/svg-colorizer/)**
+
 > **⚠️ Breaking change in v0.4.0**
 >
 > The `callback` parameter type has been narrowed from `Function` to `() => void` in `fill`, `replace`, and `invert`.
